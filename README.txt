@@ -30,10 +30,11 @@ INSTALLATION (new machine)
             sudo nixos-generate-config --show-hardware-config > ~/dotfiles/hardware-configuration.nix
 
        4. First switch.  Flakes are not yet enabled on a fresh install,
-          so pass them explicitly:
+          so enable them for this one command via NIX_CONFIG
+          (nixos-rebuild does not accept --extra-experimental-features):
 
             cd ~/dotfiles
-            sudo nixos-rebuild switch --flake .#nixos --extra-experimental-features 'nix-command flakes'
+            sudo NIX_CONFIG="experimental-features = nix-command flakes" nixos-rebuild switch --flake .#nixos
 
           After this switch flakes stay enabled permanently
           (see nix.settings in configuration.nix).
@@ -54,9 +55,6 @@ UPDATING INPUTS
 NOTES
        o  home-manager runs as a NixOS module; one rebuild command covers
           system and user.
-
-       o  User programs (editors, terminals, archivers, zsh setup, npm
-          paths) belong in home.nix, not configuration.nix.
 
        o  Do not symlink from this repo into /etc/nixos.  The repo is the
           source of truth.
