@@ -99,7 +99,7 @@
       email = "14094094+thsr@users.noreply.github.com";
       # signingkey = "YOURKEYID";
     };
-    settings.commit.gpgsign = true;
+    # settings.commit.gpgsign = true;
   };
 
   home.pointerCursor = {
