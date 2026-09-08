@@ -10,8 +10,9 @@
     zed-editor
 
     ghostty
-    sublime3
     qalculate-qt
+    sublime3
+    ungoogled-chromium
 
     xarchiver
     p7zip
