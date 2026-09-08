@@ -12,12 +12,31 @@
     ghostty
     qalculate-qt
     sublime3
-    ungoogled-chromium
 
     xarchiver
     p7zip
     unrar
   ];
+
+  programs.chromium = {
+    enable = true;
+    package = pkgs.ungoogled-chromium;
+    commandLineArgs = [
+      "--extension-mime-request-handling=always-prompt-for-install"
+    ];
+    extensions = [
+      {
+        # chromium-web-store: enables installing/updating extensions from the
+        # Chrome Web Store on ungoogled-chromium
+        id = "ocaahdebbfolfmndjeplogmgcagdmblk";
+        crxPath = pkgs.fetchurl {
+          url = "https://github.com/NeverDecaf/chromium-web-store/releases/download/v1.5.5.4/Chromium.Web.Store.crx";
+          hash = "sha256-Y8B1tKJbEa8sU22tGRlG6NlUf5LVtsJXss5BONKZbzI=";
+        };
+        version = "1.5.5.4";
+      }
+    ];
+  };
 
   programs.fish = {
     enable = true;
