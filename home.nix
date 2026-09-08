@@ -10,7 +10,10 @@
     nodejs
     zed-editor
 
+    openssh
+
     ghostty
+    obsidian
     qalculate-qt
     sublime3
 
@@ -37,7 +40,7 @@
   xdg.desktopEntries.chrome-agent = {
     name = "Chromium (agent debug :9222)";
     comment = "Chromium with remote debugging for agent-browser";
-    exec = "chromium --remote-debugging-port=9222";
+    exec = "chromium --remote-debugging-port=9222 --window-size=900,600 https://example.com";
     icon = "chromium";
     terminal = false;
     categories = [ "Network" "WebBrowser" ];
@@ -81,12 +84,22 @@
   # };
 
   programs.btop.enable = true;
+
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    pinentry.package = pkgs.pinentry-qt;
+  };
+
   programs.git = {
     enable = true;
     settings.user = {
       name = "thsr";
       email = "14094094+thsr@users.noreply.github.com";
+      # signingkey = "YOURKEYID";
     };
+    settings.commit.gpgsign = true;
   };
 
   home.pointerCursor = {
