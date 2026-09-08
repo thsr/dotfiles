@@ -6,6 +6,7 @@
   home.stateVersion = "26.05";
 
   home.packages = with pkgs; [
+    agent-browser
     nodejs
     zed-editor
 
@@ -21,13 +22,9 @@
   programs.chromium = {
     enable = true;
     package = pkgs.ungoogled-chromium;
-    commandLineArgs = [
-      "--extension-mime-request-handling=always-prompt-for-install"
-    ];
     extensions = [
       {
-        # chromium-web-store: enables installing/updating extensions from the
-        # Chrome Web Store on ungoogled-chromium
+        # chromium-web-store extension
         id = "ocaahdebbfolfmndjeplogmgcagdmblk";
         crxPath = pkgs.fetchurl {
           url = "https://github.com/NeverDecaf/chromium-web-store/releases/download/v1.5.5.4/Chromium.Web.Store.crx";
@@ -36,6 +33,14 @@
         version = "1.5.5.4";
       }
     ];
+  };
+  xdg.desktopEntries.chrome-agent = {
+    name = "Chromium (agent debug :9222)";
+    comment = "Chromium with remote debugging for agent-browser";
+    exec = "chromium --remote-debugging-port=9222";
+    icon = "chromium";
+    terminal = false;
+    categories = [ "Network" "WebBrowser" ];
   };
 
   programs.fish = {
@@ -62,7 +67,6 @@
     '';
   };
 
-  # previous zsh setup, kept for reference
   # programs.zsh = {
   #   enable = true;
   #   shellAliases = {
@@ -96,6 +100,8 @@
 
   home.sessionVariables = {
     NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+    AGENT_BROWSER_AUTO_CONNECT = "1";
+    AGENT_BROWSER_HEADED = "1";
   };
   home.sessionPath = [ "$HOME/.npm-global/bin" ];
 
