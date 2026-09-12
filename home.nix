@@ -104,9 +104,9 @@
     settings.user = {
       name = "thsr";
       email = "14094094+thsr@users.noreply.github.com";
-      # signingkey = "YOURKEYID";
+      signingkey = "948EEE199CC4A95A!";
     };
-    # settings.commit.gpgsign = true;
+    settings.commit.gpgsign = true;
   };
 
   home.pointerCursor = {
