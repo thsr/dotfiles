@@ -8,14 +8,11 @@ DESCRIPTION
        user configuration (home.nix) for user1, built as one unit from a
        flake.  /etc/nixos is not used; everything is built from this repo.
 
-FILES
+MAIN FILES
        flake.nix                    flake entry point
        configuration.nix            system-level NixOS configuration
        hardware-configuration.nix   generated, machine-specific
        home.nix                     home-manager configuration (user1)
-       fonts/lucida-grande/         Lucida Grande ttf files, packaged by
-                                    configuration.nix and installed into
-                                    the system font dir
 
 INSTALLATION (new machine)
        1. Install NixOS.  Create user "user1".
