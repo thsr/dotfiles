@@ -1,0 +1,42 @@
+# window-width = 150
+# window-height = 45
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+custom-shader = hackr-sh-shaders/smear_cursor_blocks.glsl
+custom-shader-animation = always
+window-decoration = server
+
+# font-family = Menlo
+font-family = "JetBrains Mono"
+font-size = 11
+font-thicken = true
+
+# Alabaster ALT BG (light) — ported from ~/.config/zed/themes/AlabasterALT.json
+background = #eeeeee
+background-opacity = .5
+unfocused-split-fill = #ccc
+# background=#E5FAFF
+foreground = #000000
+cursor-color = #0000ff
+cursor-text = #ffffff
+selection-background = #cbcdf6
+selection-foreground = #000000
+
+palette = 0=#000000
+palette = 1=#aa3731
+palette = 2=#448c37
+palette = 3=#cb9000
+palette = 4=#325cc0
+palette = 5=#7a3e9d
+palette = 6=#0083b2
+palette = 7=#666666
+palette = 8=#777777
+palette = 9=#f05050
+palette = 10=#60cb00
+palette = 11=#ffbc5d
+palette = 12=#007acc
+palette = 13=#e64ce6
+palette = 14=#00aacb
+palette = 15=#d4d4d4

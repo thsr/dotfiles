@@ -116,10 +116,10 @@ in
     iosevka
     jetbrains-mono
     liberation_ttf
+    lucidaGrande  # from top include
     source-sans
     source-code-pro
 
-    lucidaGrande
   ];
 
   fonts.fontconfig.defaultFonts = {

@@ -1,25 +1,26 @@
 spawn-at-startup "xwayland-satellite"
 
+// prefer-no-csd true
+
 input {
     keyboard {
         xkb { layout "us"; }
         repeat-delay 200
-        repeat-rate 40
+        repeat-rate 45
+        numlock
     }
     mod-key "Super"
 }
 
 layout {
-    gaps 70
+    gaps 100
     background-color "transparent"
 
-    center-focused-column "always"  // Keep the focused tiled column centered.
-    always-center-single-column  // Center a single tiled window on the workspace.
+    center-focused-column "always"
+    empty-workspace-above-first
+    always-center-single-column
 
-    // Optional: make new windows a reasonable width.
-    default-column-width {
-        proportion 0.4
-    }
+    default-column-width { proportion 0.4; }
 
     preset-column-widths {
         proportion 0.33333
@@ -27,12 +28,43 @@ layout {
         proportion 0.66667
         proportion 0.95
     }
-
     focus-ring {
+        off
+        width 2
         active-color   "#ffbe29"
         inactive-color "#6f7880"
         urgent-color   "#f05050"
     }
+    shadow {
+        on
+        softness 20
+        spread 10
+        offset x=0 y=0
+        draw-behind-window false
+        color "#00000080"
+        inactive-color "#00000010"
+    }
+}
+
+// list with `niri msg windows`
+window-rule {
+    draw-border-with-background false
+    clip-to-geometry true
+    geometry-corner-radius 5
+}
+window-rule {
+    match app-id="^thunar|com.mitchellh.ghostty$"
+    default-column-width { proportion 0.3333; }
+    default-window-height { proportion 0.75; }
+}
+window-rule {
+    match app-id="firefox"
+    default-column-width { proportion 0.8; }
+}
+window-rule {
+    match app-id="md.Obsidian"
+    default-column-width { proportion 0.4; }
+    default-window-height { proportion 0.5; }
 }
 
 // Place the DMS/quickshell layer behind the overview.
@@ -41,9 +73,8 @@ layer-rule {
     place-within-backdrop true
 }
 
+// list with `niri msg action`, check names with `wev`
 binds {
-    // niri msg action
-
     Mod+Space   repeat=false { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Mod+T       repeat=false { spawn "ghostty"; }
     Mod+E       repeat=false { spawn "thunar"; }
@@ -51,13 +82,10 @@ binds {
 
     Mod+R   repeat=false { switch-preset-column-width; }
     Mod+F   { maximize-column; }
-    Mod+H   repeat=false { set-window-width "-10%"; }
-    Mod+L   repeat=false { set-window-width "+10%"; }
-    Mod+J   repeat=false { set-window-height "+10%"; }
-    Mod+K   repeat=false { set-window-height "-10%"; }
-
-    Mod+O         { toggle-overview; }
-    Mod+Shift+Slash   { show-hotkey-overlay; }
+    Mod+H   { set-window-width "-10%"; }
+    Mod+L   { set-window-width "+10%"; }
+    Mod+J   { set-window-height "+10%"; }
+    Mod+K   { set-window-height "-10%"; }
 
     Mod+Prior   { focus-workspace-up; }
     Mod+Next    { focus-workspace-down; }
@@ -71,5 +99,30 @@ binds {
     Mod+Shift+Left    { consume-or-expel-window-left; }
     Mod+Shift+Right   { consume-or-expel-window-right; }
 
-    Mod+Shift+E   { quit; }
+    Mod+Shift+3  { spawn "dms" "screenshot" "full"; }
+    Mod+Shift+4  { spawn "dms" "screenshot"; }
+    Mod+Shift+5  { spawn "dms" "screenshot" "window"; }
+
+    Mod+O             { toggle-overview; }
+    Mod+Shift+Slash   { show-hotkey-overlay; }
+    Mod+Shift+E       { quit; }
+}
+
+animations {
+    workspace-switch {
+        duration-ms 100
+        curve "ease-out-expo"
+    }
+    horizontal-view-movement {
+        duration-ms 100
+        curve "ease-out-expo"
+    }
+    window-movement {
+        duration-ms 100
+        curve "ease-out-expo"
+    }
+    overview-open-close {
+        duration-ms 100
+        curve "ease-out-expo"
+    }
 }
