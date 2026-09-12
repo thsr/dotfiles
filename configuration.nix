@@ -33,6 +33,21 @@ in
   time.timeZone = "Europe/Madrid";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  services.printing.enable = true;
+
+
+  # %%% audio %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+
+  # %%% graphics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.graphics.enable = true;
@@ -45,6 +60,8 @@ in
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+
+  # %%% login / desktop / windows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.ly.enable = true;
@@ -67,23 +84,18 @@ in
     enableVPN             = true;
   };
 
-  services.printing.enable = true;
 
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
+  # %%% user %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   users.users."user1" = {
     isNormalUser = true;
     description = "user1";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
   };
+
+
+  # %%% packages / programs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  nixpkgs.config.allowUnfree = true;
 
   programs.fish.enable = true;
   # programs.zsh.enable = true;
@@ -97,29 +109,57 @@ in
     ];
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
+    (vim-full.customize {
+      name = "vim";
+      vimrcConfig.customRC = ''
+        set number
+        set relativenumber
+
+        filetype plugin indent on
+        set softtabstop=4
+        set tabstop=4
+        set shiftwidth=4
+        set autoindent
+        set smartindent
+        set expandtab
+        set showmatch
+
+        set list
+        set listchars=tab:→\ ,lead:·,trail:·,nbsp:␣
+
+        syntax on
+
+        " Set leader key
+        let mapleader = " "
+
+        " Open netrw with <leader>cd
+        nnoremap <leader>cd :Ex<CR>
+      '';
+    })
     fastfetch
     git
     gparted
-    vim
     wget
-
     xwayland-satellite
   ];
 
+
+  # %%% fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     corefonts
+    ia-writer-mono
+    ia-writer-duospace
+    ia-writer-quattro
+    ibm-plex
     inter
     iosevka
     jetbrains-mono
     liberation_ttf
-    lucidaGrande  # from top include
+    lucidaGrande  # from let block
     source-sans
     source-code-pro
-
   ];
 
   fonts.fontconfig.defaultFonts = {
@@ -127,5 +167,7 @@ in
     monospace = [ "JetBrains Mono" ];
   };
 
+
+  # %%% don't touch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   system.stateVersion = "26.05";
 }

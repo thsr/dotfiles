@@ -3,13 +3,13 @@ spawn-at-startup "xwayland-satellite"
 // prefer-no-csd true
 
 input {
+    mod-key "Super"
     keyboard {
         xkb { layout "us"; }
         repeat-delay 200
-        repeat-rate 45
+        repeat-rate 50
         numlock
     }
-    mod-key "Super"
 }
 
 layout {
@@ -81,7 +81,7 @@ binds {
     Mod+Q       repeat=false { close-window; }
 
     Mod+R   repeat=false { switch-preset-column-width; }
-    Mod+F   { maximize-column; }
+    Mod+F   repeat=false { maximize-column; }
     Mod+H   { set-window-width "-10%"; }
     Mod+L   { set-window-width "+10%"; }
     Mod+J   { set-window-height "+10%"; }
@@ -99,13 +99,14 @@ binds {
     Mod+Shift+Left    { consume-or-expel-window-left; }
     Mod+Shift+Right   { consume-or-expel-window-right; }
 
-    Mod+Shift+3  { spawn "dms" "screenshot" "full"; }
-    Mod+Shift+4  { spawn "dms" "screenshot"; }
-    Mod+Shift+5  { spawn "dms" "screenshot" "window"; }
+    Mod+Shift+3   repeat=false { spawn "dms" "screenshot" "full"; }
+    Mod+Shift+4   repeat=false { spawn "dms" "screenshot"; }
+    Mod+Shift+5   repeat=false { spawn "dms" "screenshot" "window"; }
 
-    Mod+O             { toggle-overview; }
-    Mod+Shift+Slash   { show-hotkey-overlay; }
-    Mod+Shift+E       { quit; }
+    Mod+O             repeat=false { toggle-overview; }
+    Mod+Shift+Slash   repeat=false { show-hotkey-overlay; }
+    Mod+Shift+L       repeat=false { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+    Mod+Shift+E       repeat=false { quit; }
 }
 
 animations {
