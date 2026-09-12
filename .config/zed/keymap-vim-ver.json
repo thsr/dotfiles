@@ -1,0 +1,42 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-shift-l": "editor::SplitSelectionIntoLines",
+      "cmd-shift-g": "search::SelectPreviousMatch",
+      "ctrl-alt-/": "workspace::ToggleBottomDock",
+      "ctrl-alt-[": "workspace::ToggleLeftDock",
+      "ctrl-alt-,": "workspace::ToggleRightDock",
+      "ctrl-alt-.": "multi_workspace::ToggleWorkspaceSidebar",
+      "ctrl-alt-n": "project_panel::Toggle",
+      "ctrl-alt-m": "git_panel::Toggle",
+      "ctrl-/": "terminal_panel::Toggle",
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g p f": "file_finder::Toggle",
+      "g p t": "tab_switcher::Toggle",
+      "g p o": "outline::Toggle",
+      "g r d": "editor::GoToDefinitionSplit",
+      "shift-l": "vim::GoToTab",
+      "shift-h": "vim::GoToPreviousTab",
+    }
+  },
+  {
+    "context": "(VimControl && !Terminal) || (ProjectPanel && not_editing) || (GitPanel && !(vim_mode == insert) )",
+    "bindings": {
+      "space e": "project_panel::Toggle",
+      "space g g": "git_panel::Toggle",
+      "ctrl-alt-shift-a": "agent::Toggle",
+    }
+  },
+]

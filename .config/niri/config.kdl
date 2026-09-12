@@ -1,0 +1,71 @@
+spawn-at-startup "dms" "run"
+spawn-at-startup "xwayland-satellite"
+
+input {
+    keyboard {
+        xkb { layout "us"; }
+        repeat-delay 200
+        repeat-rate 40
+    }
+    mod-key "Super"
+}
+
+layout {
+    gaps 70
+    background-color "transparent"
+
+    center-focused-column "always"  // Keep the focused tiled column centered.
+    always-center-single-column  // Center a single tiled window on the workspace.
+
+    // Optional: make new windows a reasonable width.
+    default-column-width {
+        proportion 0.4
+    }
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.95
+    }
+
+    focus-ring {
+        active-color   "#ffbe29"
+        inactive-color "#6f7880"
+        urgent-color   "#f05050"
+    }
+}
+
+// Place the DMS/quickshell layer behind the overview.
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+binds {
+    Mod+Space   repeat=false { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+T       repeat=false { spawn "ghostty"; }
+    Mod+F       repeat=false { spawn "thunar"; }
+    Mod+Q       repeat=false { close-window; }
+
+    Mod+H   repeat=false { set-window-width "-10%"; }
+    Mod+L   repeat=false { set-window-width "+10%"; }
+    Mod+J   repeat=false { set-window-height "+10%"; }
+    Mod+K   repeat=false { set-window-height "-10%"; }
+
+    Mod+O       { toggle-overview; }
+    Mod+Prior   { focus-workspace-up; }
+    Mod+Next    { focus-workspace-down; }
+
+    Mod+Up      { focus-window-or-workspace-up; }
+    Mod+Down    { focus-window-or-workspace-down; }
+    Mod+Left    { focus-column-left; }
+    Mod+Right   { focus-column-right; }
+
+    Mod+Shift+Up      { move-window-up-or-to-workspace-up; }
+    Mod+Shift+Down    { move-window-down-or-to-workspace-down; }
+    Mod+Shift+Left    { move-column-left-or-to-monitor-left; }
+    Mod+Shift+Right   { move-column-right-or-to-monitor-right; }
+
+    Mod+Shift+E   { quit; }
+}

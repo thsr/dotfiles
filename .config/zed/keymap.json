@@ -1,0 +1,31 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-alt-o": "project_panel::Toggle",
+      "ctrl-alt-p": "git_panel::Toggle",
+      "ctrl-alt-[": "workspace::ToggleLeftDock",
+      "ctrl-alt-]": "workspace::ToggleRightDock",
+      "ctrl-alt-'": "workspace::ToggleBottomDock",
+      "ctrl-alt-\\": "multi_workspace::ToggleWorkspaceSidebar",
+    },
+  },
+  {
+    "context": "AcpThread > Editor",
+    "unbind": {
+      "ctrl-'": "agent::CycleThinkingEffort"
+    }
+  },
+  {
+    "context": "AcpThread > Editor",
+    "unbind": {
+      "ctrl-;": "agent::OpenAddContextMenu"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-;": "editor::ToggleLineNumbers"
+    }
+  }
+]
