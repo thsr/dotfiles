@@ -126,6 +126,6 @@
     longitude = -0.48;
     temperature.day = 6500;
     temperature.night = 2700;
-    settings.general.adjustment-method = "randr";  # or "wayland"
+    # settings.general.adjustment-method = "randr";  # or "wayland"
   };
 }

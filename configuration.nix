@@ -56,6 +56,18 @@ in
     variant = "";
   };
 
+  programs.niri.enable = true;
+
+  programs.dms-shell = {
+    enable = true;
+    enableSystemMonitoring = true;   # dgop widgets
+    enableDynamicTheming  = true;    # matugen wallpaper theming
+    enableAudioWavelength = true;    # cava visualizer
+    enableCalendarEvents  = true;    # khal
+    enableVPN             = true;
+    # systemd.enable = true;         # see caveat at the bottom before turning this on
+  };
+
   services.printing.enable = true;
 
   services.pulseaudio.enable = false;
@@ -91,8 +103,11 @@ in
   environment.systemPackages = with pkgs; [
     fastfetch
     git
+    gparted
     vim
     wget
+
+    xwayland-satellite
   ];
 
   fonts.fontDir.enable = true;
@@ -107,6 +122,11 @@ in
 
     lucidaGrande
   ];
+
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = [ "Lucida Grande" ];
+    monospace = [ "JetBrains Mono" ];
+  };
 
   system.stateVersion = "26.05";
 }
