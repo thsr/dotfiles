@@ -122,6 +122,10 @@ animations {
         duration-ms 100
         curve "ease-out-expo"
     }
+    window-resize {
+        duration-ms 70
+        curve "ease-out-expo"
+    }
     overview-open-close {
         duration-ms 100
         curve "ease-out-expo"
