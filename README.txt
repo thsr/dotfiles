@@ -1,4 +1,4 @@
-DOTFILES(7)                   User Manual                    DOTFILES(7)
+DOTFILES(7)                   thsr dotfiles                    DOTFILES(7)
 
 NAME
        dotfiles -- NixOS system and user configuration, host "nixos"
@@ -30,8 +30,7 @@ INSTALLATION (new machine)
             sudo nixos-generate-config --show-hardware-config > ~/dotfiles/hardware-configuration.nix
 
        4. First switch.  Flakes are not yet enabled on a fresh install,
-          so enable them for this one command via NIX_CONFIG
-          (nixos-rebuild does not accept --extra-experimental-features):
+          so enable them this one time via NIX_CONFIG:
 
             cd ~/dotfiles
             sudo NIX_CONFIG="experimental-features = nix-command flakes" nixos-rebuild switch --flake .#nixos
@@ -59,4 +58,4 @@ NOTES
        o  Do not symlink from this repo into /etc/nixos.  The repo is the
           source of truth.
 
-DOTFILES(7)                   User Manual                    DOTFILES(7)
+DOTFILES(7)                   thsr dotfiles                    DOTFILES(7)
