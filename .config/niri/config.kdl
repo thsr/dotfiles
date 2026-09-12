@@ -1,4 +1,3 @@
-spawn-at-startup "dms" "run"
 spawn-at-startup "xwayland-satellite"
 
 input {
@@ -43,20 +42,25 @@ layer-rule {
 }
 
 binds {
+    // niri msg action
+
     Mod+Space   repeat=false { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Mod+T       repeat=false { spawn "ghostty"; }
-    Mod+F       repeat=false { spawn "thunar"; }
+    Mod+E       repeat=false { spawn "thunar"; }
     Mod+Q       repeat=false { close-window; }
 
+    Mod+R   repeat=false { switch-preset-column-width; }
+    Mod+F   { maximize-column; }
     Mod+H   repeat=false { set-window-width "-10%"; }
     Mod+L   repeat=false { set-window-width "+10%"; }
     Mod+J   repeat=false { set-window-height "+10%"; }
     Mod+K   repeat=false { set-window-height "-10%"; }
 
-    Mod+O       { toggle-overview; }
+    Mod+O         { toggle-overview; }
+    Mod+Shift+Slash   { show-hotkey-overlay; }
+
     Mod+Prior   { focus-workspace-up; }
     Mod+Next    { focus-workspace-down; }
-
     Mod+Up      { focus-window-or-workspace-up; }
     Mod+Down    { focus-window-or-workspace-down; }
     Mod+Left    { focus-column-left; }
@@ -64,8 +68,8 @@ binds {
 
     Mod+Shift+Up      { move-window-up-or-to-workspace-up; }
     Mod+Shift+Down    { move-window-down-or-to-workspace-down; }
-    Mod+Shift+Left    { move-column-left-or-to-monitor-left; }
-    Mod+Shift+Right   { move-column-right-or-to-monitor-right; }
+    Mod+Shift+Left    { consume-or-expel-window-left; }
+    Mod+Shift+Right   { consume-or-expel-window-right; }
 
     Mod+Shift+E   { quit; }
 }

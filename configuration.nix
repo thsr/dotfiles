@@ -65,7 +65,6 @@ in
     enableAudioWavelength = true;    # cava visualizer
     enableCalendarEvents  = true;    # khal
     enableVPN             = true;
-    # systemd.enable = true;         # see caveat at the bottom before turning this on
   };
 
   services.printing.enable = true;
