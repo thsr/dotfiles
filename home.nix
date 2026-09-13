@@ -5,6 +5,71 @@
   home.homeDirectory = "/home/user1";
   home.stateVersion = "26.05";
 
+  home.pointerCursor = {
+    enable = true;
+    name = "Quintom_Ink";
+    size = 20;
+    package = pkgs.quintom-cursor-theme;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
+  home.sessionVariables = {
+    NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+    AGENT_BROWSER_AUTO_CONNECT = "1";
+    AGENT_BROWSER_HEADED = "1";
+  };
+  home.sessionPath = [ "$HOME/.npm-global/bin" ];
+
+
+  # %%% services %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  services.gammastep = {
+    enable = true;
+    tray = true;
+    provider = "manual";
+    latitude = 39.49;
+    longitude = -0.48;
+    temperature.day = 6500;
+    temperature.night = 2700;
+    # settings.general.adjustment-method = "randr";  # or "wayland"
+  };
+
+  xfconf.settings = {
+    xsettings = {
+      "Gtk/FontName"          = "Lucida Grande 9";
+      "Gtk/MonospaceFontName" = "JetBrains Mono Medium 10";
+      "Xft/DPI"               = 96;
+      "Gtk/CursorThemeName"   = "Quintom_Ink";
+      "Gtk/CursorThemeSize"   = 20;
+    };
+  };
+
+  dconf.settings."org/gnome/desktop/interface" = {
+    font-name = "Lucida Grande 9";
+    monospace-font-name = "JetBrains Mono Medium 10";
+    document-font-name = "Lucida Grande 9";
+  };
+
+  gtk = {
+    enable = true;
+    font = {
+      name = "Lucida Grande";
+      size = 9;
+      # package = pkgs.<pkg>;  # only if the family is actually packaged — see below
+    };
+  };
+
+
+  # %%% dotfiles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/config.kdl";
+  xdg.configFile."zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/settings.json";
+  xdg.configFile."zed/keymap.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/keymap.json";
+  xdg.configFile."zed/themes/Alabaster.json".source = ./.config/zed/themes/Alabaster.json;
+  xdg.configFile."zed/themes/AlabasterALT.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/themes/AlabasterALT.json";
+  xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/ghostty/config";
+
+
+  # %%% packages / programs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   home.packages = with pkgs; [
     agent-browser
     nodejs
@@ -16,18 +81,7 @@
     obsidian
     qalculate-qt
     sublime3
-
-    xarchiver
-    p7zip
-    unrar
   ];
-
-  xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/config.kdl";
-  xdg.configFile."zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/settings.json";
-  xdg.configFile."zed/keymap.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/keymap.json";
-  xdg.configFile."zed/themes/Alabaster.json".source = ./.config/zed/themes/Alabaster.json;
-  xdg.configFile."zed/themes/AlabasterALT.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/themes/AlabasterALT.json";
-  xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/ghostty/config";
 
   programs.chromium = {
     enable = true;
@@ -44,6 +98,7 @@
       }
     ];
   };
+
   xdg.desktopEntries.chrome-agent = {
     name = "Chromium (agent debug :9222)";
     comment = "Chromium with remote debugging for agent-browser";
@@ -107,32 +162,5 @@
       signingkey = "948EEE199CC4A95A!";
     };
     settings.commit.gpgsign = true;
-  };
-
-  home.pointerCursor = {
-    enable = true;
-    name = "Adwaita";
-    size = 20;
-    package = pkgs.adwaita-icon-theme;
-    gtk.enable = true;
-    x11.enable = true;
-  };
-
-  home.sessionVariables = {
-    NPM_CONFIG_PREFIX = "$HOME/.npm-global";
-    AGENT_BROWSER_AUTO_CONNECT = "1";
-    AGENT_BROWSER_HEADED = "1";
-  };
-  home.sessionPath = [ "$HOME/.npm-global/bin" ];
-
-  services.gammastep = {
-    enable = true;
-    tray = true;
-    provider = "manual";
-    latitude = 39.49;
-    longitude = -0.48;
-    temperature.day = 6500;
-    temperature.night = 2700;
-    # settings.general.adjustment-method = "randr";  # or "wayland"
   };
 }

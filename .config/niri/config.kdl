@@ -1,3 +1,5 @@
+spawn-at-startup "dms" "run"
+
 spawn-at-startup "xwayland-satellite"
 
 // prefer-no-csd true
@@ -37,7 +39,7 @@ layout {
     }
     shadow {
         on
-        softness 20
+        softness 30
         spread 10
         offset x=0 y=0
         draw-behind-window false
@@ -66,6 +68,12 @@ window-rule {
     default-column-width { proportion 0.4; }
     default-window-height { proportion 0.5; }
 }
+window-rule {
+    match app-id="xarchiver"
+    open-floating true
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 0.333; }
+}
 
 // Place the DMS/quickshell layer behind the overview.
 layer-rule {
@@ -76,6 +84,7 @@ layer-rule {
 // list with `niri msg action`, check names with `wev`
 binds {
     Mod+Space   repeat=false { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+B       repeat=false { spawn "firefox"; }
     Mod+T       repeat=false { spawn "ghostty"; }
     Mod+E       repeat=false { spawn "thunar"; }
     Mod+Q       repeat=false { close-window; }

@@ -77,10 +77,9 @@ in
 
   programs.dms-shell = {
     enable = true;
+    systemd.enable = false;
     enableSystemMonitoring = true;   # dgop widgets
-    enableDynamicTheming  = true;    # matugen wallpaper theming
     enableAudioWavelength = true;    # cava visualizer
-    enableCalendarEvents  = true;    # khal
     enableVPN             = true;
   };
 
@@ -105,7 +104,13 @@ in
   programs.thunar = {
     enable = true;
     plugins = with pkgs; [
-      thunar-archive-plugin
+      (xfce.thunar-archive-plugin.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          install -Dm755 ${xarchiver}/libexec/thunar-archive-plugin/xarchiver.tap \
+            $out/libexec/thunar-archive-plugin/xarchiver.tap
+        '';
+      }))
+      xarchiver
     ];
   };
 
@@ -133,7 +138,7 @@ in
         " Set leader key
         let mapleader = " "
 
-        " Open netrw with <leader>cd
+        " Open netrw
         nnoremap <leader>cd :Ex<CR>
       '';
     })
@@ -141,6 +146,7 @@ in
     git
     gparted
     wget
+    xarchiver
     xwayland-satellite
   ];
 
@@ -164,9 +170,9 @@ in
 
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Lucida Grande" ];
+    serif = [ "IBM Plex Serif" ];
     monospace = [ "JetBrains Mono" ];
   };
-
 
   # %%% don't touch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   system.stateVersion = "26.05";
