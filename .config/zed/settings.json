@@ -122,9 +122,12 @@
   "lsp_document_colors": "background",
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_features": {
-      "calt": false,
-      "liga": false
-    },
+    "calt": false,
+    "liga": false,
+    "dlig": false,
+    "clig": false,
+    "hlig": false
+  },
   // "buffer_font_size": 13.0,
   "buffer_font_weight": 500.0,
   "buffer_line_height": "standard",

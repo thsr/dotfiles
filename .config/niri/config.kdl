@@ -91,7 +91,7 @@ layer-rule {
 // check niri actions with `niri msg action`
 // check noctalia actions with `noctalia msg --help`
 binds {
-    Mod+B       repeat=false { spawn "firefox"; }
+    Mod+B       repeat=false { spawn "librewolf"; }
     Mod+T       repeat=false { spawn "ghostty"; }
     Mod+E       repeat=false { spawn "thunar"; }
     Mod+Q       repeat=false { close-window; }

@@ -75,53 +75,56 @@ button_borders = false
     [shell.panel]
     control_center_placement = "floating"
     open_near_click_control_center = true
+    session_placement = "floating"
+    session_position = "center"
 
     [[shell.session.actions]]
     action = "lock"
     countdown_seconds = 0.0
     enabled = true
-    shortcut = "1"
+    shortcut = "l"
     variant = "default"
 
     [[shell.session.actions]]
     action = "logout"
-    countdown_seconds = 0.0
+    countdown_seconds = 2.0
     enabled = true
-    shortcut = "2"
+    shortcut = "0"
     variant = "default"
 
     [[shell.session.actions]]
     action = "lock_and_suspend"
-    countdown_seconds = 0.0
+    countdown_seconds = 2.0
     enabled = true
-    shortcut = "3"
+    shortcut = "o"
     variant = "default"
 
     [[shell.session.actions]]
     action = "reboot"
-    countdown_seconds = 0.0
+    countdown_seconds = 2.0
     enabled = true
-    shortcut = "4"
+    shortcut = "r"
     variant = "default"
 
     [[shell.session.actions]]
     action = "shutdown"
-    countdown_seconds = 0.0
+    countdown_seconds = 2.0
     enabled = true
-    shortcut = "5"
-    variant = "destructive"
+    shortcut = "s"
+    variant = "secondary"
 
     [[shell.session.actions]]
     action = "command"
     command = "systemctl reboot --firmware-setup"
-    countdown_seconds = 0.0
+    countdown_seconds = 2.0
     enabled = true
+    glyph = "cpu"
     label = "UEFI"
-    shortcut = "KP_6"
+    shortcut = "u"
     variant = "default"
 
 [theme]
-community_palette = "Aura"
+community_palette = "Monochrome"
 mode = "light"
 source = "wallpaper"
 wallpaper_scheme = "m3-monochrome"
@@ -147,3 +150,4 @@ glyph = "grid-dots"
 [widget.taskbar]
 only_active_workspace = true
 show_window_title = true
+window_title_max_width = 150

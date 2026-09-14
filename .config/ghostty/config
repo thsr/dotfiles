@@ -12,10 +12,15 @@ window-decoration = server
 font-family = "JetBrains Mono"
 font-size = 10
 font-thicken = true
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-feature = -clig
+font-feature = -hlig
 
 # Alabaster ALT BG (light) — ported from ~/.config/zed/themes/AlabasterALT.json
 background = #eeeeee
-background-opacity = 0.6667
+background-opacity = 0.6
 unfocused-split-fill = #ccc
 # background=#E5FAFF
 foreground = #000000
