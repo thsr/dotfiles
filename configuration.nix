@@ -1,7 +1,7 @@
 # System configuration for host "nixos".
 # User-level programs and dotfiles live in home.nix (home-manager).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 let
   lucidaGrande = pkgs.stdenvNoCC.mkDerivation {
@@ -75,20 +75,20 @@ in
 
   programs.niri.enable = true;
 
-  programs.dms-shell = {
-    enable = true;
-    systemd.enable = false;
-    enableSystemMonitoring = true;   # dgop widgets
-    enableAudioWavelength = true;    # cava visualizer
-    enableVPN             = true;
-  };
+  # programs.dms-shell = {
+  #   enable = true;
+  #   systemd.enable = false;
+  #   enableSystemMonitoring = true;   # dgop widgets
+  #   enableAudioWavelength = true;    # cava visualizer
+  #   enableVPN             = true;
+  # };
 
 
   # %%% user %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   users.users."user1" = {
     isNormalUser = true;
     description = "user1";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
   };
 
@@ -120,7 +120,6 @@ in
       vimrcConfig.customRC = ''
         set number
         set relativenumber
-
         filetype plugin indent on
         set softtabstop=4
         set tabstop=4
@@ -129,49 +128,59 @@ in
         set smartindent
         set expandtab
         set showmatch
-
         set list
         set listchars=tab:→\ ,lead:·,trail:·,nbsp:␣
-
         syntax on
-
         " Set leader key
         let mapleader = " "
-
         " Open netrw
         nnoremap <leader>cd :Ex<CR>
+        "" Change cursor on mode
+        :autocmd InsertEnter * set cul
+        :autocmd InsertLeave * set nocul
       '';
     })
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     fastfetch
     git
     gparted
+    librewolf
     wget
     xarchiver
     xwayland-satellite
   ];
 
+  virtualisation.docker ={
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+    autoPrune.enable = true;
+  };
+
 
   # %%% fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  fonts.fontDir.enable = true;
-  fonts.packages = with pkgs; [
-    corefonts
-    ia-writer-mono
-    ia-writer-duospace
-    ia-writer-quattro
-    ibm-plex
-    inter
-    iosevka
-    jetbrains-mono
-    liberation_ttf
-    lucidaGrande  # from let block
-    source-sans
-    source-code-pro
-  ];
-
-  fonts.fontconfig.defaultFonts = {
-    sansSerif = [ "Lucida Grande" ];
-    serif = [ "IBM Plex Serif" ];
-    monospace = [ "JetBrains Mono" ];
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      corefonts
+      ia-writer-mono
+      ia-writer-duospace
+      ia-writer-quattro
+      ibm-plex
+      inter
+      iosevka
+      jetbrains-mono
+      liberation_ttf
+      lucidaGrande  # from let block
+      source-sans
+      source-code-pro
+    ];
+    fontconfig.defaultFonts = {
+      sansSerif = [ "Lucida Grande" ];
+      serif = [ "IBM Plex Serif" ];
+      monospace = [ "JetBrains Mono" ];
+    };
   };
 
   # %%% don't touch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

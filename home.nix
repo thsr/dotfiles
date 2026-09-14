@@ -1,25 +1,25 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "user1";
-  home.homeDirectory = "/home/user1";
-  home.stateVersion = "26.05";
-
-  home.pointerCursor = {
-    enable = true;
-    name = "Quintom_Ink";
-    size = 20;
-    package = pkgs.quintom-cursor-theme;
-    gtk.enable = true;
-    x11.enable = true;
+  home = {
+    username = "user1";
+    homeDirectory = "/home/user1";
+    stateVersion = "26.05";
+    pointerCursor = {
+      enable = true;
+      name = "Quintom_Ink";
+      size = 20;
+      package = pkgs.quintom-cursor-theme;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+    sessionVariables = {
+      NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+      AGENT_BROWSER_AUTO_CONNECT = "1";
+      AGENT_BROWSER_HEADED = "1";
+    };
+    sessionPath = [ "$HOME/.npm-global/bin" ];
   };
-
-  home.sessionVariables = {
-    NPM_CONFIG_PREFIX = "$HOME/.npm-global";
-    AGENT_BROWSER_AUTO_CONNECT = "1";
-    AGENT_BROWSER_HEADED = "1";
-  };
-  home.sessionPath = [ "$HOME/.npm-global/bin" ];
 
 
   # %%% services %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,13 +55,13 @@
     font = {
       name = "Lucida Grande";
       size = 9;
-      # package = pkgs.<pkg>;  # only if the family is actually packaged — see below
     };
   };
 
 
   # %%% dotfiles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/config.kdl";
+  xdg.configFile."noctalia/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/noctalia/settings.json";
   xdg.configFile."zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/settings.json";
   xdg.configFile."zed/keymap.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/keymap.json";
   xdg.configFile."zed/themes/Alabaster.json".source = ./.config/zed/themes/Alabaster.json;
