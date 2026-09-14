@@ -112,8 +112,10 @@ binds {
 
     Mod+Shift+Up      { move-window-up-or-to-workspace-up; }
     Mod+Shift+Down    { move-window-down-or-to-workspace-down; }
-    Mod+Shift+Left    { consume-or-expel-window-left; }
-    Mod+Shift+Right   { consume-or-expel-window-right; }
+    Mod+Shift+Left    { move-column-left-or-to-monitor-left; }
+    Mod+Shift+Right   { move-column-right-or-to-monitor-right; }
+    Mod+Shift+H       { consume-or-expel-window-left; }
+    Mod+Shift+L       { consume-or-expel-window-right; }
 
     // For dms-shell
     // Mod+Space   repeat=false { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
@@ -126,7 +128,7 @@ binds {
     Mod+Shift+3            repeat=false { spawn "noctalia" "msg" "screenshot-fullscreen" "pick"; }
     Mod+Shift+4            repeat=false { spawn "noctalia" "msg" "screenshot-region"; }
     Mod+Shift+5            repeat=false { spawn "noctalia" "msg" "screenshot-annotate"; }
-    Mod+Shift+L            repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+Shift+Escape       repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }
     XF86AudioMute          repeat=false { spawn "noctalia" "msg" "volume-mute"; }
     XF86AudioLowerVolume   { spawn "noctalia" "msg" "volume-down"; }
     XF86AudioRaiseVolume   { spawn "noctalia" "msg" "volume-up"; }
