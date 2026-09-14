@@ -1,0 +1,149 @@
+config_version = 14
+
+[bar.default]
+center = [ "workspaces" ]
+end = [
+    "media",
+    "tray",
+    "notifications",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "control-center",
+    "session",
+    "clock"
+]
+margin_ends = 0
+position = "bottom"
+radius = 0
+start = [ "launcher", "taskbar" ]
+thickness = 25
+
+[control_center]
+sidebar = "full"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-3" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1920.0
+    cy = 1978.0
+    output = "DP-3"
+    placement_height = 2160.0
+    placement_width = 3840.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[shell]
+button_borders = false
+
+    [shell.animation]
+    speed = 3.35000004991889
+
+    [shell.launcher]
+    compact = true
+    show_app_actions = true
+
+    [shell.panel]
+    control_center_placement = "floating"
+    open_near_click_control_center = true
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "systemctl reboot --firmware-setup"
+    countdown_seconds = 0.0
+    enabled = true
+    label = "UEFI"
+    shortcut = "KP_6"
+    variant = "default"
+
+[theme]
+community_palette = "Aura"
+mode = "light"
+source = "wallpaper"
+wallpaper_scheme = "m3-monochrome"
+
+[wallpaper]
+directory = "/home/user1/Pictures/walls"
+
+    [wallpaper.default]
+    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+
+    [wallpaper.last]
+    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+
+[widget.clock]
+format = "%a %b %d %l:%M %p"
+
+[widget.launcher]
+glyph = "grid-dots"
+
+[widget.taskbar]
+only_active_workspace = true
+show_window_title = true
