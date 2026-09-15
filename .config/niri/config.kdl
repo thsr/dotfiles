@@ -12,6 +12,9 @@ input {
         repeat-rate 50
         numlock
     }
+    mouse {
+        scroll-factor 3.0
+    }
 }
 
 layout {
@@ -61,7 +64,7 @@ window-rule {
 }
 window-rule {
     match app-id="firefox"
-    default-column-width { proportion 0.8; }
+    default-column-width { proportion 0.5; }
 }
 window-rule {
     match app-id="md.Obsidian"
@@ -91,10 +94,11 @@ layer-rule {
 // check niri actions with `niri msg action`
 // check noctalia actions with `noctalia msg --help`
 binds {
-    Mod+B       repeat=false { spawn "librewolf"; }
-    Mod+T       repeat=false { spawn "ghostty"; }
-    Mod+E       repeat=false { spawn "thunar"; }
-    Mod+Q       repeat=false { close-window; }
+    Mod+B       repeat=false { spawn "firefox"; }
+    Mod+V       repeat=false { spawn "ghostty"; }
+    Mod+Z       repeat=false { spawn "zeditor"; }
+    Mod+D       repeat=false { spawn "thunar"; }
+    Mod+X       repeat=false { close-window; }
 
     Mod+R   repeat=false { switch-preset-column-width; }
     Mod+F   repeat=false { maximize-column; }

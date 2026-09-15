@@ -58,6 +58,8 @@
     };
   };
 
+  # services.opensnitch-ui.enable = true;
+
 
   # %%% dotfiles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/config.kdl";

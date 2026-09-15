@@ -133,13 +133,13 @@ wallpaper_scheme = "m3-monochrome"
 directory = "/home/user1/Pictures/walls"
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/original_f9077b1b1f0ce82097c1f3afba57f047.jpg"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/original_f9077b1b1f0ce82097c1f3afba57f047.jpg"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/original_f9077b1b1f0ce82097c1f3afba57f047.jpg"
 
 [widget.clock]
 format = "%a %b %d %l:%M %p"

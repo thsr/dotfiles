@@ -150,6 +150,8 @@ in
     xwayland-satellite
   ];
 
+  # services.opensnitch.enable = true;
+
   virtualisation.docker ={
     rootless = {
       enable = true;
