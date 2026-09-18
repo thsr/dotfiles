@@ -50,20 +50,20 @@ layout {
         inactive-color "#00000010"
     }
 }
-
-// list with `niri msg windows`
 window-rule {
     draw-border-with-background false
     clip-to-geometry true
     geometry-corner-radius 5
 }
+
+// list with `niri msg windows`
 window-rule {
     match app-id="^thunar|com.mitchellh.ghostty$"
     default-column-width { proportion 0.3333; }
     default-window-height { proportion 0.75; }
 }
 window-rule {
-    match app-id="firefox"
+    match app-id="^firefox|chromium-browser$"
     default-column-width { proportion 0.5; }
 }
 window-rule {
@@ -83,7 +83,6 @@ window-rule {
     default-column-width { proportion 0.5; }
     default-window-height { proportion 0.5; }
 }
-
 // Place the DMS/quickshell layer behind the overview.
 layer-rule {
     match namespace="^quickshell$"
@@ -94,7 +93,7 @@ layer-rule {
 // check niri actions with `niri msg action`
 // check noctalia actions with `noctalia msg --help`
 binds {
-    Mod+B       repeat=false { spawn "firefox"; }
+    Mod+B       repeat=false { spawn "chromium"; }
     Mod+V       repeat=false { spawn "ghostty"; }
     Mod+Z       repeat=false { spawn "zeditor"; }
     Mod+D       repeat=false { spawn "thunar"; }

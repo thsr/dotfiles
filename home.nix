@@ -79,6 +79,7 @@
 
     openssh
 
+    brave
     ghostty
     obsidian
     qalculate-qt
@@ -98,14 +99,22 @@
         };
         version = "1.5.5.4";
       }
+      {
+        # ublock origin extension
+        id = "ocaahdebbfolfmndjeplogmgcagdmblk";
+        crxPath = pkgs.fetchurl {
+          url = "https://github.com/gorhill/uBlock/releases/download/1.75.0/uBlock0_1.75.0.chromium.crx";
+        };
+        version = "1.75.0";
+      }
     ];
   };
 
   xdg.desktopEntries.chrome-agent = {
-    name = "Chromium (agent debug :9222)";
-    comment = "Chromium with remote debugging for agent-browser";
-    exec = "chromium --remote-debugging-port=9222 --window-size=900,600 https://example.com";
-    icon = "chromium";
+    name = "Brave (agent debug :9222)";
+    comment = "Brave with remote debugging for agent-browser";
+    exec = "brave --remote-debugging-port=9222 --window-size=900,600 https://example.com";
+    icon = "brave";
     terminal = false;
     categories = [ "Network" "WebBrowser" ];
   };

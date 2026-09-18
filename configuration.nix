@@ -7,11 +7,17 @@ let
   lucidaGrande = pkgs.stdenvNoCC.mkDerivation {
     pname = "lucida-grande";
     version = "local";
-
     src = ./fonts/lucida-grande;
-
     installPhase = ''
       install -Dm644 *.ttf -t $out/share/fonts/truetype/lucida-grande
+    '';
+  };
+  monaco = pkgs.stdenvNoCC.mkDerivation {
+    pname = "moncao";
+    version = "local";
+    src = ./fonts/monaco;
+    installPhase = ''
+      install -Dm644 *.ttf -t $out/share/fonts/truetype/monaco
     '';
   };
 in
@@ -23,8 +29,11 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 10;
+    # timeout = 0;
+  };
 
   networking.hostName = "nixos";
   networking.wireless.enable = true;
@@ -104,7 +113,7 @@ in
   programs.thunar = {
     enable = true;
     plugins = with pkgs; [
-      (xfce.thunar-archive-plugin.overrideAttrs (old: {
+      (pkgs.thunar-archive-plugin.overrideAttrs (old: {
         postInstall = (old.postInstall or "") + ''
           install -Dm755 ${xarchiver}/libexec/thunar-archive-plugin/xarchiver.tap \
             $out/libexec/thunar-archive-plugin/xarchiver.tap
@@ -151,6 +160,7 @@ in
   ];
 
   # services.opensnitch.enable = true;
+  services.portmaster.enable = true;
 
   virtualisation.docker ={
     rootless = {
@@ -159,6 +169,8 @@ in
     };
     autoPrune.enable = true;
   };
+
+  environment.etc."brave/policies/managed/BraveDebloater.json".source = ./chromium/BraveDebloater.json;
 
 
   # %%% fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -175,6 +187,7 @@ in
       jetbrains-mono
       liberation_ttf
       lucidaGrande  # from let block
+      monaco  # from let block
       source-sans
       source-code-pro
     ];

@@ -8,9 +8,10 @@ custom-shader = hackr-sh-shaders/smear_cursor_blocks.glsl
 custom-shader-animation = always
 window-decoration = server
 
-# font-family = Menlo
-font-family = "JetBrains Mono"
+font-family = Monaco
+# font-family = "JetBrains Mono"
 font-size = 10
+adjust-cell-height = 10%
 font-thicken = true
 font-feature = -calt
 font-feature = -liga
