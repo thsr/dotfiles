@@ -55,34 +55,11 @@ in
   hardware.graphics.enable32Bit = true;
 
 
-  # %%% login / desktop / windows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = false;
-  services.displayManager.ly.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  programs.niri.enable = true;
-
-  # programs.dms-shell = {
-  #   enable = true;
-  #   systemd.enable = false;
-  #   enableSystemMonitoring = true;   # dgop widgets
-  #   enableAudioWavelength = true;    # cava visualizer
-  #   enableVPN             = true;
-  # };
-
-
   # %%% user %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   users.users."user1" = {
     isNormalUser = true;
     description = "user1";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
   };
 

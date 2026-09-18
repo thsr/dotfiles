@@ -57,8 +57,6 @@
     };
   };
 
-  # services.opensnitch-ui.enable = true;
-
 
   # %%% dotfiles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/config.kdl";
@@ -166,11 +164,7 @@
 
   programs.git = {
     enable = true;
-    settings.user = {
-      name = "thsr";
-      email = "14094094+thsr@users.noreply.github.com";
-      signingkey = "948EEE199CC4A95A!";
-    };
-    settings.commit.gpgsign = true;
+    settings.user.name = "thsr";
+    settings.user.email = "14094094+thsr@users.noreply.github.com";
   };
 }
