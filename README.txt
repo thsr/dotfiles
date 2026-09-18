@@ -1,18 +1,22 @@
 DOTFILES(7)                   thsr dotfiles                    DOTFILES(7)
 
 NAME
-       dotfiles -- NixOS system and user configuration, host "nixos"
+       dotfiles -- shared NixOS system and user configuration
 
 DESCRIPTION
-       NixOS system configuration (configuration.nix) plus home-manager
-       user configuration (home.nix) for user1, built as one unit from a
-       flake.  /etc/nixos is not used; everything is built from this repo.
+       Shared NixOS system configuration plus home-manager user
+       configuration for user1, built as one unit from a flake.  /etc/nixos
+       is not used; everything is built from this repo.
 
 MAIN FILES
        flake.nix                    flake entry point
-       configuration.nix            system-level NixOS configuration
-       hardware-configuration.nix   generated, machine-specific
-       home.nix                     home-manager configuration (user1)
+       configuration.nix           shared system configuration
+       configuration-<host>.nix    host-specific system configuration
+       <host>.nix                  generated hardware configuration
+       home.nix                    shared home-manager configuration
+       home-<host>.nix             host-specific home-manager configuration
+
+       Configured hosts are "nixos" and "device1".
 
 INSTALLATION (new machine)
        1. Install NixOS.  Create user "user1".
@@ -21,28 +25,30 @@ INSTALLATION (new machine)
 
             git clone <url> ~/dotfiles
 
-       3. Generate hardware configuration for the machine and overwrite
-          the copy in the repo:
+       3. Generate hardware configuration, using the machine hostname as the
+          filename.  For device1:
 
-            sudo nixos-generate-config --show-hardware-config > ~/dotfiles/hardware-configuration.nix
+            sudo nixos-generate-config --show-hardware-config > ~/dotfiles/device1.nix
 
-       4. First switch.  Flakes are not yet enabled on a fresh install,
-          so enable them this one time via NIX_CONFIG:
+       4. Add new files to Git.  Flakes do not include untracked files:
 
             cd ~/dotfiles
-            sudo NIX_CONFIG="experimental-features = nix-command flakes" nixos-rebuild switch --flake .#nixos
+            git add device1.nix configuration-device1.nix home-device1.nix
+
+       5. First switch.  Flakes are not yet enabled on a fresh install, so
+          enable them this one time via NIX_CONFIG:
+
+            sudo NIX_CONFIG="experimental-features = nix-command flakes" nixos-rebuild switch --flake .#device1
 
           After this switch flakes stay enabled permanently
           (see nix.settings in configuration.nix).
 
 REBUILDING
-            sudo nixos-rebuild switch --flake ~/dotfiles#nixos
+            sudo nixos-rebuild switch --flake ~/dotfiles#$(hostname -s)
 
-       or, from a login shell, the alias:
+       or, from a Fish login shell, the alias:
 
             nrs
-
-       Commit before rebuilding: flakes only see files tracked by git.
 
 UPDATING INPUTS
             nix flake update        # inside ~/dotfiles
@@ -54,5 +60,8 @@ NOTES
 
        o  Do not symlink from this repo into /etc/nixos.  The repo is the
           source of truth.
+
+       o  Host-specific system and home-manager options belong in the
+          corresponding configuration-<host>.nix and home-<host>.nix files.
 
 DOTFILES(7)                   thsr dotfiles                    DOTFILES(7)

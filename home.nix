@@ -4,7 +4,6 @@
   home = {
     username = "user1";
     homeDirectory = "/home/user1";
-    stateVersion = "26.05";
     pointerCursor = {
       enable = true;
       name = "Quintom_Ink";
@@ -124,7 +123,7 @@
     shellAliases = {
       ll = "ls -lah --color=always --group-directories-first";
       gs = "git status";
-      nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#nixos";
+      nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#(hostname -s)";
     };
     interactiveShellInit = ''
       fastfetch
@@ -148,7 +147,7 @@
   #   shellAliases = {
   #     ll = "ls -lah --color=always --group-directories-first";
   #     gs = "git status";
-  #     nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#nixos";
+  #     nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#$(hostname -s)";
   #   };
   #   initContent = ''
   #     PROMPT=$'\n%B%F{green}%n@%m%f:%F{blue}%~%f$ %b'

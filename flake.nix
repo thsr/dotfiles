@@ -11,20 +11,33 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hm-backup";
-          home-manager.users.user1 = import ./home.nix;
-        }
-      ];
+  outputs = inputs@{ nixpkgs, home-manager, ... }:
+    let
+      mkHost = { configuration, home }: nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        system = "x86_64-linux";
+        modules = [
+          configuration
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "hm-backup";
+            home-manager.users.user1 = import home;
+          }
+        ];
+      };
+    in
+    {
+      nixosConfigurations = {
+        nixos = mkHost {
+          configuration = ./configuration-nixos.nix;
+          home = ./home-nixos.nix;
+        };
+        device1 = mkHost {
+          configuration = ./configuration-device1.nix;
+          home = ./home-device1.nix;
+        };
+      };
     };
-  };
 }

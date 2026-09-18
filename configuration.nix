@@ -1,7 +1,7 @@
-# System configuration for host "nixos".
+# Shared system configuration.
 # User-level programs and dotfiles live in home.nix (home-manager).
 
-{ inputs, config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 let
   lucidaGrande = pkgs.stdenvNoCC.mkDerivation {
@@ -22,11 +22,6 @@ let
   };
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.loader.systemd-boot = {
@@ -35,7 +30,6 @@ in
     # timeout = 0;
   };
 
-  networking.hostName = "nixos";
   networking.wireless.enable = true;
   networking.networkmanager.enable = true;
 
@@ -57,17 +51,8 @@ in
 
 
   # %%% graphics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    nvidiaSettings = true;
-    open = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
 
 
   # %%% login / desktop / windows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -197,7 +182,4 @@ in
       monospace = [ "JetBrains Mono" ];
     };
   };
-
-  # %%% don't touch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  system.stateVersion = "26.05";
 }
