@@ -60,22 +60,36 @@ window-rule {
 // list with `niri msg windows`
 window-rule {
     match app-id="com.mitchellh.ghostty"
-    match app-id="Thunar"
-    match app-id="thunar"
+    match app-id="Thunar|thunar"
     default-column-width { proportion 0.3333; }
     default-window-height { proportion 0.75; }
 }
 window-rule {
-    match title="Create New Folder"
+    match app-id="Thunar|thunar" is-floating=true
+    default-column-width { proportion 0.2; }
+    default-window-height { proportion 0.4; }
+}
+window-rule {
+    match app-id="Thunar|thunar" title="^Rename"
+    match app-id="Thunar|thunar" title="^New"
+    match app-id="Thunar|thunar" title="^Create"
+    open-floating true
+    default-column-width { proportion 0.1; }
+    default-window-height { proportion 0.05; }
+}
+window-rule {
+    match app-id="Thunar|thunar" title="Properties$"
+    match app-id="Thunar|thunar" title="^Open With"
+    match app-id="Thunar|thunar" title="^Set Default"
+    open-floating true
     default-column-width { proportion 0.15; }
-    default-window-height { proportion 0.1; }
+    default-window-height { proportion 0.3; }
 }
 window-rule {
     match app-id="xdg-desktop-portal-gtk"
     default-column-width { proportion 0.2; }
     default-window-height { proportion 0.4; }
 }
-
 window-rule {
     match app-id="firefox"
     match app-id="chromium-browser"
