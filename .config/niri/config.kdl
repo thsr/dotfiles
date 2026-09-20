@@ -142,12 +142,12 @@ binds {
     // Mod+Shift+4   repeat=false { spawn "dms" "screenshot"; }
     // Mod+Shift+5   repeat=false { spawn "dms" "screenshot" "window"; }
     // Mod+Shift+L       repeat=false { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-    Mod+Space              repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-    Mod+comma              repeat=false { spawn "noctalia" "msg" "settings-toggle"; }
-    Mod+Shift+3            repeat=false { spawn "noctalia" "msg" "screenshot-fullscreen" "pick"; }
-    Mod+Shift+4            repeat=false { spawn "noctalia" "msg" "screenshot-region"; }
-    Mod+Shift+5            repeat=false { spawn "noctalia" "msg" "screenshot-annotate"; }
-    Mod+Shift+Escape       repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+Space              repeat=false hotkey-overlay-title="Launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+comma              repeat=false hotkey-overlay-title="Shell settings" { spawn "noctalia" "msg" "settings-toggle"; }
+    Mod+Shift+3            repeat=false hotkey-overlay-title="Screenshot fullscreen" { spawn "noctalia" "msg" "screenshot-fullscreen" "pick"; }
+    Mod+Shift+4            repeat=false hotkey-overlay-title="Screenshot region" { spawn "noctalia" "msg" "screenshot-region"; }
+    Mod+Shift+5            repeat=false hotkey-overlay-title="Screenshot annotate"{ spawn "noctalia" "msg" "screenshot-annotate"; }
+    Mod+Shift+Escape       repeat=false hotkey-overlay-title="Session panel" { spawn "noctalia" "msg" "panel-toggle" "session"; }
     XF86AudioMute          repeat=false { spawn "noctalia" "msg" "volume-mute"; }
     XF86AudioLowerVolume   { spawn "noctalia" "msg" "volume-down"; }
     XF86AudioRaiseVolume   { spawn "noctalia" "msg" "volume-up"; }
