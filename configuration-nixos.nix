@@ -22,7 +22,10 @@
   services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.ly.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    useNautilus = false;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {

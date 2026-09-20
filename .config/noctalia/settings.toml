@@ -1,7 +1,6 @@
 config_version = 14
 
 [bar.default]
-background_opacity = 0.59999999999999998
 center = [ "workspaces" ]
 end = [
     "media",
@@ -22,6 +21,7 @@ position = "bottom"
 radius = 0
 start = [ "launcher", "taskbar" ]
 thickness = 25
+widget_spacing = 20
 
 [control_center]
 sidebar = "full"
@@ -158,6 +158,9 @@ format = "%a %b %d %l:%M %p"
 
 [widget.launcher]
 glyph = "grid-dots"
+
+[widget.media]
+hide_when_no_media = true
 
 [widget.taskbar]
 only_active_workspace = true

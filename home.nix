@@ -35,6 +35,8 @@
 
   xfconf.settings = {
     xsettings = {
+      "Net/ThemeName"         = "OS-X-Mavericks-1.2";
+      "Net/IconThemeName"     = "Mac-OS-X-Lion-master";
       "Gtk/FontName"          = "Lucida Grande 9";
       "Gtk/MonospaceFontName" = "JetBrains Mono Medium 10";
       "Xft/DPI"               = 96;
@@ -44,6 +46,9 @@
   };
 
   dconf.settings."org/gnome/desktop/interface" = {
+    gtk-theme = "OS-X-Mavericks-1.2";
+    icon-theme = "Mac-OS-X-Lion-master";
+    color-scheme = "prefer-light";
     font-name = "Lucida Grande 9";
     monospace-font-name = "JetBrains Mono Medium 10";
     document-font-name = "Lucida Grande 9";
@@ -51,14 +56,24 @@
 
   gtk = {
     enable = true;
+    theme.name = "OS-X-Mavericks-1.2";
+    iconTheme.name = "Mac-OS-X-Lion-master";
+    colorScheme = "light";
     font = {
       name = "Lucida Grande";
       size = 9;
     };
   };
 
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+  };
+
 
   # %%% dotfiles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  home.file.".themes/OS-X-Mavericks-1.2".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.themes/OS-X-Mavericks-1.2";
+  home.file.".icons/Mac-OS-X-Lion-master".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.icons/Mac-OS-X-Lion-master";
   xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/config.kdl";
   xdg.stateFile."noctalia/settings.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/noctalia/settings.toml";
   xdg.configFile."zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/settings.json";
