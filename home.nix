@@ -34,6 +34,14 @@
   };
 
   xfconf.settings = {
+    thunar = {
+      "last-show-hidden" = true;
+      "last-view" = "ThunarDetailsView";
+      "last-details-view-column-widths" = "50,50,116,50,50,50,85,50,315,50,122,65,50,76";
+      "last-details-view-visible-columns" = "THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_GROUP,THUNAR_COLUMN_NAME,THUNAR_COLUMN_OWNER,THUNAR_COLUMN_PERMISSIONS,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE";
+      "last-details-view-fixed-columns" = true;
+      "last-details-view-column-order" = "THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_SIZE_IN_BYTES,THUNAR_COLUMN_TYPE,THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_LOCATION,THUNAR_COLUMN_MIME_TYPE,THUNAR_COLUMN_DATE_CREATED,THUNAR_COLUMN_PERMISSIONS,THUNAR_COLUMN_OWNER,THUNAR_COLUMN_GROUP,THUNAR_COLUMN_DATE_ACCESSED,THUNAR_COLUMN_RECENCY,THUNAR_COLUMN_DATE_DELETED";
+    };
     xsettings = {
       "Net/ThemeName"         = "OS-X-Mavericks-1.2";
       "Net/IconThemeName"     = "Mac-OS-X-Lion-master";
@@ -70,6 +78,45 @@
     platformTheme.name = "gtk3";
   };
 
+    xdg = {
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+
+        desktop = "${config.home.homeDirectory}/Desktop";
+        documents = "${config.home.homeDirectory}/Documents";
+        download = "${config.home.homeDirectory}/Downloads";
+        music = "${config.home.homeDirectory}/Music";
+        pictures = "${config.home.homeDirectory}/Pictures";
+        videos = "${config.home.homeDirectory}/Videos";
+        templates = "${config.home.homeDirectory}/Templates";
+        publicShare = "${config.home.homeDirectory}/Public";
+      };
+
+      # mimeApps = {
+      #   enable = true;
+
+      #   defaultApplications = {
+      #     "text/plain" = [ "org.gnome.TextEditor.desktop" ];
+      #     "image/png" = [ "org.gnome.eog.desktop" ];
+      #     "image/jpeg" = [ "org.gnome.eog.desktop" ];
+      #     "application/pdf" = [ "org.gnome.Evince.desktop" ];
+
+      #     "x-scheme-handler/http" = [ "firefox.desktop" ];
+      #     "x-scheme-handler/https" = [ "firefox.desktop" ];
+      #   };
+      # };
+
+      desktopEntries.chrome-agent = {
+        name = "Brave (agent debug :9222)";
+        comment = "Brave with remote debugging for agent-browser";
+        exec = "brave --remote-debugging-port=9222 --window-size=900,600 https://example.com";
+        icon = "brave";
+        terminal = false;
+        categories = [ "Network" "WebBrowser" ];
+      };
+    };
+
 
   # %%% dotfiles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   home.file.".themes/OS-X-Mavericks-1.2".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.themes/OS-X-Mavericks-1.2";
@@ -86,16 +133,16 @@
   # %%% packages / programs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   home.packages = with pkgs; [
     agent-browser
-    nodejs
-    zed-editor
-
-    openssh
-
     brave
+    ffmpeg
     ghostty
+    gthumb
+    nodejs
     obsidian
+    openssh
     qalculate-qt
     sublime3
+    zed-editor
   ];
 
   programs.chromium = {
@@ -120,15 +167,6 @@
         version = "1.75.0";
       }
     ];
-  };
-
-  xdg.desktopEntries.chrome-agent = {
-    name = "Brave (agent debug :9222)";
-    comment = "Brave with remote debugging for agent-browser";
-    exec = "brave --remote-debugging-port=9222 --window-size=900,600 https://example.com";
-    icon = "brave";
-    terminal = false;
-    categories = [ "Network" "WebBrowser" ];
   };
 
   programs.fish = {

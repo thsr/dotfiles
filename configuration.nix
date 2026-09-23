@@ -113,9 +113,11 @@ in
     })
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     fastfetch
+    ffmpeg
     git
     gparted
     librewolf
+    unzip
     wget
     xarchiver
     xwayland-satellite

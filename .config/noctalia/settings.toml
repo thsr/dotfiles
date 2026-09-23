@@ -1,27 +1,30 @@
 config_version = 14
 
-[bar.default]
-center = [ "workspaces" ]
-end = [
-    "media",
-    "tray",
-    "notifications",
-    "clipboard",
-    "network",
-    "bluetooth",
-    "volume",
-    "brightness",
-    "battery",
-    "control-center",
-    "session",
-    "clock"
-]
-margin_ends = 0
-position = "bottom"
-radius = 0
-start = [ "launcher", "taskbar" ]
-thickness = 25
-widget_spacing = 20
+[bar]
+order = [ "top", "bottom" ]
+
+    [bar.top]
+    background_opacity = 0.4999999888241291
+    center = []
+    end = [ "clipboard", "wallpaper", "cpu", "temp", "ram", "session" ]
+    font_weight = 400
+    margin_ends = 0
+    position = "bottom"
+    radius = 0
+    start = [ "launcher", "taskbar" ]
+    thickness = 25
+    widget_spacing = 10
+
+    [bar.bottom]
+    background_opacity = 0.4999999888241291
+    center = [ "privacy" ]
+    end = [ "media", "tray", "notifications", "network", "brightness", "bluetooth", "volume", "battery", "clock" ]
+    font_weight = 400
+    margin_ends = 0
+    radius = 0
+    start = [ "workspaces" ]
+    thickness = 25
+    widget_spacing = 10
 
 [control_center]
 sidebar = "full"
@@ -44,7 +47,7 @@ widget_order = [ "lockscreen-login-box@DP-3" ]
     box_height = 196.0
     box_width = 810.0
     cx = 1920.0
-    cy = 1978.0
+    cy = 1977.999755859375
     output = "DP-3"
     placement_height = 2160.0
     placement_width = 3840.0
@@ -72,6 +75,35 @@ background_opacity = 0.59999999999999998
 
 [osd]
 background_opacity = 0.59999999999999998
+
+[plugin_settings."local/solar-position-wallpaper"]
+latitude = 39.0
+wallpaper_folder = "/home/user1/Pictures/walls/mojave_hours"
+
+[plugin_settings."local/sun-position-wallpaper"]
+wallpaper_path = "/home/user1/Pictures/walls/mojave_hours/266_5.png"
+
+[plugin_settings."thsr/solar-dynamic-wallpaper"]
+wallpaper_folder = "/home/user1/Pictures/walls/mojave_hours"
+
+[plugins]
+auto_update = "all"
+enabled = [ "local/solar-position-wallpaper", "thsr/solar-dynamic-wallpaper" ]
+
+    [[plugins.source]]
+    kind = "git"
+    location = "https://github.com/noctalia-dev/official-plugins"
+    name = "official"
+
+    [[plugins.source]]
+    kind = "git"
+    location = "https://github.com/noctalia-dev/community-plugins"
+    name = "community"
+
+    [[plugins.source]]
+    kind = "path"
+    location = "~/dev/noctalia-plugins"
+    name = "my-plugins"
 
 [shell]
 button_borders = false
@@ -143,15 +175,18 @@ wallpaper_scheme = "m3-monochrome"
 
 [wallpaper]
 directory = "/home/user1/Pictures/walls"
+edge_smoothness = 0.73999998345971107
+transition = [ "fade" ]
+transition_duration = 30000
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/mojave_hours/182_53.png"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/mojave_hours/182_53.png"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/mojave_hours/182_53.png"
 
 [widget.clock]
 format = "%a %b %d %l:%M %p"

@@ -16,8 +16,13 @@ input {
         accel-speed -0.7
         scroll-factor 3.0
     }
+    touchpad {
+        // tap
+        // accel-profile "flat"
+        accel-speed 0.1
+        scroll-factor 1
+    }
 }
-
 layout {
     gaps 100
     background-color "transparent"
@@ -57,12 +62,29 @@ window-rule {
     geometry-corner-radius 5
 }
 
+output "DP-1" {
+    mode "3840x2160"
+    position x=-960 y=-2160
+}
+output "eDP-1" {
+    mode "2880x1800@60.000"
+    position x=0 y=0
+    scale 1.5
+    layout {
+        gaps 20
+    }
+}
+
 // list with `niri msg windows`
 window-rule {
     match app-id="com.mitchellh.ghostty"
+    default-column-width { fixed 1000; }
+    default-window-height { proportion 0.75; }
+}
+window-rule {
     match app-id="Thunar|thunar"
     default-column-width { proportion 0.3333; }
-    default-window-height { proportion 0.75; }
+    default-window-height { proportion 0.5; }
 }
 window-rule {
     match app-id="Thunar|thunar" is-floating=true
@@ -74,16 +96,16 @@ window-rule {
     match app-id="Thunar|thunar" title="^New"
     match app-id="Thunar|thunar" title="^Create"
     open-floating true
-    default-column-width { proportion 0.1; }
-    default-window-height { proportion 0.05; }
+    default-column-width { fixed 500; }
+    default-window-height { fixed 100; }
 }
 window-rule {
     match app-id="Thunar|thunar" title="Properties$"
     match app-id="Thunar|thunar" title="^Open With"
     match app-id="Thunar|thunar" title="^Set Default"
     open-floating true
-    default-column-width { proportion 0.15; }
-    default-window-height { proportion 0.3; }
+    default-column-width { fixed 400; }
+    default-window-height { fixed 500; }
 }
 window-rule {
     match app-id="xdg-desktop-portal-gtk"
@@ -93,7 +115,7 @@ window-rule {
 window-rule {
     match app-id="firefox"
     match app-id="chromium-browser"
-    default-column-width { proportion 0.5; }
+    default-column-width { fixed 1600; }
 }
 window-rule {
     match app-id="md.Obsidian"
@@ -111,6 +133,12 @@ window-rule {
     // open-floating true
     default-column-width { proportion 0.5; }
     default-window-height { proportion 0.5; }
+}
+window-rule {
+    match app-id="qalc"
+    open-floating true
+    default-column-width { fixed 600; }
+    default-window-height { fixed 600; }
 }
 // Place the DMS/quickshell layer behind the overview.
 layer-rule {
