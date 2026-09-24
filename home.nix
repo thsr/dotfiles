@@ -141,6 +141,7 @@
     obsidian
     openssh
     qalculate-qt
+    spotify
     sublime3
     zed-editor
   ];

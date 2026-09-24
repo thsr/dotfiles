@@ -3,6 +3,17 @@ config_version = 14
 [bar]
 order = [ "top", "bottom" ]
 
+    [bar.bottom]
+    background_opacity = 0.4999999888241291
+    center = [ "privacy" ]
+    end = [ "media", "tray", "notifications", "network", "brightness", "bluetooth", "volume", "battery", "clock" ]
+    font_weight = 400
+    margin_ends = 0
+    radius = 0
+    start = [ "workspaces" ]
+    thickness = 25
+    widget_spacing = 10
+
     [bar.top]
     background_opacity = 0.4999999888241291
     center = []
@@ -12,17 +23,6 @@ order = [ "top", "bottom" ]
     position = "bottom"
     radius = 0
     start = [ "launcher", "taskbar" ]
-    thickness = 25
-    widget_spacing = 10
-
-    [bar.bottom]
-    background_opacity = 0.4999999888241291
-    center = [ "privacy" ]
-    end = [ "media", "tray", "notifications", "network", "brightness", "bluetooth", "volume", "battery", "clock" ]
-    font_weight = 400
-    margin_ends = 0
-    radius = 0
-    start = [ "workspaces" ]
     thickness = 25
     widget_spacing = 10
 
@@ -180,13 +180,13 @@ transition = [ "fade" ]
 transition_duration = 30000
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/mojave_hours/182_53.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/309_-39.png"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/mojave_hours/182_53.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/309_-39.png"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/user1/Pictures/walls/mojave_hours/182_53.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/309_-39.png"
 
 [widget.clock]
 format = "%a %b %d %l:%M %p"

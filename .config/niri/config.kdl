@@ -31,7 +31,7 @@ layout {
     empty-workspace-above-first
     always-center-single-column
 
-    default-column-width { proportion 0.4; }
+    default-column-width { fixed 1200; }
 
     preset-column-widths {
         proportion 0.33333
@@ -78,13 +78,9 @@ output "eDP-1" {
 // list with `niri msg windows`
 window-rule {
     match app-id="com.mitchellh.ghostty"
+    match app-id="Thunar|thunar"
     default-column-width { fixed 1000; }
     default-window-height { proportion 0.75; }
-}
-window-rule {
-    match app-id="Thunar|thunar"
-    default-column-width { proportion 0.3333; }
-    default-window-height { proportion 0.5; }
 }
 window-rule {
     match app-id="Thunar|thunar" is-floating=true
@@ -106,6 +102,18 @@ window-rule {
     open-floating true
     default-column-width { fixed 400; }
     default-window-height { fixed 500; }
+}
+window-rule {
+    match app-id="Thunar|thunar" title="^File"
+    open-floating true
+    default-column-width { fixed 500; }
+    default-window-height { fixed 150; }
+}
+window-rule {
+    match app-id="Thunar|thunar" title="^Confirm"
+    open-floating true
+    default-column-width { fixed 400; }
+    default-window-height { fixed 300; }
 }
 window-rule {
     match app-id="xdg-desktop-portal-gtk"
