@@ -180,13 +180,13 @@ transition = [ "fade" ]
 transition_duration = 30000
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/mojave_hours/309_-39.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/233_38.png"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/mojave_hours/309_-39.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/233_38.png"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/user1/Pictures/walls/mojave_hours/309_-39.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/233_38.png"
 
 [widget.clock]
 format = "%a %b %d %l:%M %p"

@@ -6,9 +6,11 @@
     homeDirectory = "/home/user1";
     pointerCursor = {
       enable = true;
-      name = "Quintom_Ink";
-      size = 20;
-      package = pkgs.quintom-cursor-theme;
+      # name = "Quintom_Ink";
+      # package = pkgs.quintom-cursor-theme;
+      package = pkgs.capitaine-cursors;
+      name = "Capitaine Cursors";
+      size = 24;
       gtk.enable = true;
       x11.enable = true;
     };
@@ -33,6 +35,8 @@
     # settings.general.adjustment-method = "randr";  # or "wayland"
   };
 
+
+  # %%% x and desktop %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   xfconf.settings = {
     thunar = {
       "last-show-hidden" = true;
@@ -48,8 +52,19 @@
       "Gtk/FontName"          = "Lucida Grande 9";
       "Gtk/MonospaceFontName" = "JetBrains Mono Medium 10";
       "Xft/DPI"               = 96;
-      "Gtk/CursorThemeName"   = "Quintom_Ink";
-      "Gtk/CursorThemeSize"   = 20;
+      "Gtk/CursorThemeName"   = "capitaine-cursors";
+      "Gtk/CursorThemeSize"   = 32;
+    };
+    xfwm4 = {
+      "general/theme" = "Agua";
+      "general/easy_click" = "Super";
+    };
+    xfce4-keyboard-shortcuts = {
+      "/commands/custom/<Super>d" = "thunar";
+      "/commands/custom/<Super>v" = "ghostty";
+      "/xfwm4/custom/<Super>x" = "close_window_key";
+      "/xfwm4/custom/<Super>Left" = "prev_workspace_key";
+      "/xfwm4/custom/<Super>Right" = "next_workspace_key";
     };
   };
 
@@ -78,44 +93,44 @@
     platformTheme.name = "gtk3";
   };
 
-    xdg = {
-      userDirs = {
-        enable = true;
-        createDirectories = true;
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
 
-        desktop = "${config.home.homeDirectory}/Desktop";
-        documents = "${config.home.homeDirectory}/Documents";
-        download = "${config.home.homeDirectory}/Downloads";
-        music = "${config.home.homeDirectory}/Music";
-        pictures = "${config.home.homeDirectory}/Pictures";
-        videos = "${config.home.homeDirectory}/Videos";
-        templates = "${config.home.homeDirectory}/Templates";
-        publicShare = "${config.home.homeDirectory}/Public";
-      };
-
-      # mimeApps = {
-      #   enable = true;
-
-      #   defaultApplications = {
-      #     "text/plain" = [ "org.gnome.TextEditor.desktop" ];
-      #     "image/png" = [ "org.gnome.eog.desktop" ];
-      #     "image/jpeg" = [ "org.gnome.eog.desktop" ];
-      #     "application/pdf" = [ "org.gnome.Evince.desktop" ];
-
-      #     "x-scheme-handler/http" = [ "firefox.desktop" ];
-      #     "x-scheme-handler/https" = [ "firefox.desktop" ];
-      #   };
-      # };
-
-      desktopEntries.chrome-agent = {
-        name = "Brave (agent debug :9222)";
-        comment = "Brave with remote debugging for agent-browser";
-        exec = "brave --remote-debugging-port=9222 --window-size=900,600 https://example.com";
-        icon = "brave";
-        terminal = false;
-        categories = [ "Network" "WebBrowser" ];
-      };
+      desktop = "${config.home.homeDirectory}/Desktop";
+      documents = "${config.home.homeDirectory}/Documents";
+      download = "${config.home.homeDirectory}/Downloads";
+      music = "${config.home.homeDirectory}/Music";
+      pictures = "${config.home.homeDirectory}/Pictures";
+      videos = "${config.home.homeDirectory}/Videos";
+      templates = "${config.home.homeDirectory}/Templates";
+      publicShare = "${config.home.homeDirectory}/Public";
     };
+
+    # mimeApps = {
+    #   enable = true;
+
+    #   defaultApplications = {
+    #     "text/plain" = [ "org.gnome.TextEditor.desktop" ];
+    #     "image/png" = [ "org.gnome.eog.desktop" ];
+    #     "image/jpeg" = [ "org.gnome.eog.desktop" ];
+    #     "application/pdf" = [ "org.gnome.Evince.desktop" ];
+
+    #     "x-scheme-handler/http" = [ "firefox.desktop" ];
+    #     "x-scheme-handler/https" = [ "firefox.desktop" ];
+    #   };
+    # };
+
+    desktopEntries.chrome-agent = {
+      name = "Brave (agent debug :9222)";
+      comment = "Brave with remote debugging for agent-browser";
+      exec = "brave --remote-debugging-port=9222 --window-size=900,600 https://example.com";
+      icon = "brave";
+      terminal = false;
+      categories = [ "Network" "WebBrowser" ];
+    };
+  };
 
 
   # %%% dotfiles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,6 +143,7 @@
   xdg.configFile."zed/themes/Alabaster.json".source = ./.config/zed/themes/Alabaster.json;
   xdg.configFile."zed/themes/AlabasterALT.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/themes/AlabasterALT.json";
   xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/ghostty/config";
+  xdg.configFile."Thunar/uca.xml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/Thunar/uca.xml";
 
 
   # %%% packages / programs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

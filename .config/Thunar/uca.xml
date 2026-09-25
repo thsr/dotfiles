@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+    <action>
+        <icon>utilities-terminal</icon>
+        <name>Launch ghostty Here</name>
+        <submenu></submenu>
+        <unique-id>1788643850451661-1</unique-id>
+        <command>sh -c &apos;if [ -d &quot;$1&quot; ]; then ghostty --working-directory=&quot;$1&quot;; else ghostty --working-directory=&quot;$(dirname &quot;$1&quot;)&quot;; fi&apos; sh &quot;%f&quot;</command>
+        <description>Example for a custom action</description>
+        <range></range>
+        <patterns>*</patterns>
+        <startup-notify/>
+        <directories/>
+</action>
+</actions>

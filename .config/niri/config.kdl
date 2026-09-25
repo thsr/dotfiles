@@ -23,6 +23,10 @@ input {
         scroll-factor 1
     }
 }
+cursor {
+    xcursor-theme "capitaine-cursors"
+    xcursor-size 32
+}
 layout {
     gaps 100
     background-color "transparent"
@@ -197,7 +201,7 @@ binds {
     Mod+Shift+3            repeat=false hotkey-overlay-title="Screenshot fullscreen" { spawn "noctalia" "msg" "screenshot-fullscreen" "pick"; }
     Mod+Shift+4            repeat=false hotkey-overlay-title="Screenshot region" { spawn "noctalia" "msg" "screenshot-region"; }
     Mod+Shift+5            repeat=false hotkey-overlay-title="Screenshot annotate"{ spawn "noctalia" "msg" "screenshot-annotate"; }
-    Mod+Shift+Escape       repeat=false hotkey-overlay-title="Session panel" { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+Escape             repeat=false hotkey-overlay-title="Session panel" { spawn "noctalia" "msg" "panel-toggle" "session"; }
     XF86AudioMute          repeat=false { spawn "noctalia" "msg" "volume-mute"; }
     XF86AudioLowerVolume   { spawn "noctalia" "msg" "volume-down"; }
     XF86AudioRaiseVolume   { spawn "noctalia" "msg" "volume-up"; }
