@@ -9,8 +9,9 @@ custom-shader-animation = always
 window-decoration = server
 
 font-family = Monaco
-# font-family = "JetBrains Mono"
 font-size = 10
+# font-family = "JetBrains Mono"
+# freetype-load-flags = monochrome
 font-thicken = true
 font-feature = -calt
 font-feature = -liga
@@ -18,15 +19,14 @@ font-feature = -dlig
 font-feature = -clig
 font-feature = -hlig
 
-# Alabaster ALT BG (light) — ported from ~/.config/zed/themes/AlabasterALT.json
 background = #eeeeee
-background-opacity = 0.6
+background-opacity = 1.0
 unfocused-split-fill = #ccc
 # background=#E5FAFF
 foreground = #000000
 cursor-color = #0000ff
 cursor-text = #ffffff
-selection-background = #cbcdf6
+selection-background = #8888ff
 selection-foreground = #000000
 
 palette = 0=#000000

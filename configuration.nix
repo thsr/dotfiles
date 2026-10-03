@@ -20,6 +20,14 @@ let
       install -Dm644 *.ttf -t $out/share/fonts/truetype/monaco
     '';
   };
+  pragmataPro = pkgs.stdenvNoCC.mkDerivation {
+    pname = "pragmata-pro";
+    version = "local";
+    src = ./fonts/pragmata-pro;
+    installPhase = ''
+      install -Dm644 *.ttf -t $out/share/fonts/truetype/pragmata-pro
+    '';
+  };
 in
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -117,6 +125,7 @@ in
     git
     gparted
     librewolf
+    ripgrep
     unzip
     wget
     xarchiver
@@ -140,21 +149,29 @@ in
   # %%% fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   fonts = {
     fontDir.enable = true;
-    packages = with pkgs; [
+    packages = (with pkgs; [
       corefonts
+      departure-mono
       ia-writer-mono
       ia-writer-duospace
       ia-writer-quattro
       ibm-plex
       inter
-      iosevka
       jetbrains-mono
       liberation_ttf
       lucidaGrande  # from let block
       monaco  # from let block
+      pragmataPro  # from let block
       source-sans
       source-code-pro
-    ];
+    ]) ++ (map
+      (variant: pkgs.iosevka-bin.override { inherit variant; })
+      [
+         "SGr-IosevkaFixed"
+         "SGr-IosevkaFixedSlab"
+         "Aile"
+         "Etoile"
+       ]);
     fontconfig.defaultFonts = {
       sansSerif = [ "Lucida Grande" ];
       serif = [ "IBM Plex Serif" ];

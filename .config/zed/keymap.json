@@ -8,6 +8,7 @@
       "ctrl-alt-]": "workspace::ToggleRightDock",
       "ctrl-alt-'": "workspace::ToggleBottomDock",
       "ctrl-alt-\\": "multi_workspace::ToggleWorkspaceSidebar",
+      "ctrl-k v": "workspace::ToggleVimMode",
     },
   },
   {

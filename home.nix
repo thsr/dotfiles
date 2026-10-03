@@ -28,10 +28,10 @@
     enable = true;
     tray = true;
     provider = "manual";
-    latitude = 39.49;
-    longitude = -0.48;
+    latitude = 39.0;
+    longitude = 0.0;
     temperature.day = 6500;
-    temperature.night = 2700;
+    temperature.night = 3000;
     # settings.general.adjustment-method = "randr";  # or "wayland"
   };
 
@@ -136,13 +136,22 @@
   # %%% dotfiles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   home.file.".themes/OS-X-Mavericks-1.2".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.themes/OS-X-Mavericks-1.2";
   home.file.".icons/Mac-OS-X-Lion-master".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.icons/Mac-OS-X-Lion-master";
+
+  home.file.".pi/agent/APPEND_SYSTEM.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.pi/agent/APPEND_SYSTEM.md";
+  home.file.".pi/agent/themes/high-contrast-light.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.pi/agent/themes/high-contrast-light.json";
+
   xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/config.kdl";
+  xdg.configFile."niri/toggle-centering.sh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/toggle-centering.sh";
+
   xdg.stateFile."noctalia/settings.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/noctalia/settings.toml";
+
   xdg.configFile."zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/settings.json";
   xdg.configFile."zed/keymap.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/keymap.json";
   xdg.configFile."zed/themes/Alabaster.json".source = ./.config/zed/themes/Alabaster.json;
   xdg.configFile."zed/themes/AlabasterALT.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/themes/AlabasterALT.json";
+
   xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/ghostty/config";
+
   xdg.configFile."Thunar/uca.xml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/Thunar/uca.xml";
 
 
@@ -153,12 +162,14 @@
     ffmpeg
     ghostty
     gthumb
+    hyprpicker
     nodejs
     obsidian
     openssh
     qalculate-qt
     spotify
     sublime3
+    wl-clipboard
     zed-editor
   ];
 

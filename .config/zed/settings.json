@@ -120,6 +120,8 @@
     "dock": "left",
   },
   "lsp_document_colors": "background",
+
+  "text_rendering_mode": "grayscale",
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_features": {
     "calt": false,
@@ -128,12 +130,12 @@
     "clig": false,
     "hlig": false
   },
-  // "buffer_font_size": 13.0,
-  "buffer_font_weight": 500.0,
+  // "buffer_font_size": 15,
+  "buffer_font_weight": 500,
   "buffer_line_height": "standard",
-  // "ui_font_family": "Lucida Grande",
-  // "ui_font_size": 20.0,
-  "ui_font_weight": 500.0,
+  "ui_font_family": "Iosevka Aile",
+  // "ui_font_size": 16,
+  "ui_font_weight": 500,
   "theme": {
     "mode": "light",
     "light": "Alabaster ALT BG High Contrast (chill Marks)",

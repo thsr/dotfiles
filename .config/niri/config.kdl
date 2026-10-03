@@ -31,7 +31,8 @@ layout {
     gaps 100
     background-color "transparent"
 
-    center-focused-column "always"
+    // center-focused-column "always"
+    center-focused-column "on-overflow"
     empty-workspace-above-first
     always-center-single-column
 
@@ -43,10 +44,18 @@ layout {
         proportion 0.66667
         proportion 0.95
     }
+    border {
+        off
+        width 5
+        active-color   "#ffbe29"
+        inactive-color "#6f7880"
+        urgent-color   "#f05050"
+    }
     focus-ring {
         off
-        width 2
-        active-color   "#ffbe29"
+        width 5
+        // active-color   "#ffbe29"
+        active-gradient from="#ffff00" to="#ffff00" angle=180
         inactive-color "#6f7880"
         urgent-color   "#f05050"
     }
@@ -63,7 +72,11 @@ layout {
 window-rule {
     draw-border-with-background false
     clip-to-geometry true
-    geometry-corner-radius 5
+    geometry-corner-radius 0
+}
+window-rule {
+    match is-focused=false
+    opacity 0.8
 }
 
 output "DP-1" {
@@ -82,9 +95,13 @@ output "eDP-1" {
 // list with `niri msg windows`
 window-rule {
     match app-id="com.mitchellh.ghostty"
-    match app-id="Thunar|thunar"
     default-column-width { fixed 1000; }
     default-window-height { proportion 0.75; }
+}
+window-rule {
+    match app-id="Thunar|thunar"
+    default-column-width { fixed 1000; }
+    default-window-height { proportion 0.5; }
 }
 window-rule {
     match app-id="Thunar|thunar" is-floating=true
@@ -164,10 +181,12 @@ layer-rule {
 binds {
     Mod+B       repeat=false { spawn "chromium"; }
     Mod+V       repeat=false { spawn "ghostty"; }
+    Mod+Return  repeat=false { spawn "ghostty"; }
     Mod+Z       repeat=false { spawn "zeditor"; }
     Mod+D       repeat=false { spawn "thunar"; }
-    Mod+T       { toggle-window-floating; }
+    Mod+T       repeat=false { toggle-window-floating; }
     Mod+X       repeat=false { close-window; }
+    Mod+C       repeat=false { center-column; }
 
     Mod+R             repeat=false { switch-preset-column-width; }
     Mod+F             repeat=false { maximize-column; }
@@ -180,15 +199,15 @@ binds {
     Mod+Next    { focus-workspace-down; }
     Mod+Up      { focus-window-or-workspace-up; }
     Mod+Down    { focus-window-or-workspace-down; }
-    Mod+Left    { focus-column-left; }
-    Mod+Right   { focus-column-right; }
+    Mod+Left    cooldown-ms=50 { focus-column-left; }
+    Mod+Right   cooldown-ms=50 { focus-column-right; }
 
-    Mod+Shift+Up      { move-window-up-or-to-workspace-up; }
-    Mod+Shift+Down    { move-window-down-or-to-workspace-down; }
-    Mod+Shift+Left    { move-column-left-or-to-monitor-left; }
-    Mod+Shift+Right   { move-column-right-or-to-monitor-right; }
-    Mod+Shift+H       { consume-or-expel-window-left; }
-    Mod+Shift+L       { consume-or-expel-window-right; }
+    Mod+Shift+Up      cooldown-ms=50 { move-window-up-or-to-workspace-up; }
+    Mod+Shift+Down    cooldown-ms=50 { move-window-down-or-to-workspace-down; }
+    Mod+Shift+Left    cooldown-ms=50 { move-column-left-or-to-monitor-left; }
+    Mod+Shift+Right   cooldown-ms=50 { move-column-right-or-to-monitor-right; }
+    Mod+Shift+H       cooldown-ms=50 { consume-or-expel-window-left; }
+    Mod+Shift+L       cooldown-ms=50 { consume-or-expel-window-right; }
 
     // For dms-shell
     // Mod+Space   repeat=false { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
@@ -202,9 +221,14 @@ binds {
     Mod+Shift+4            repeat=false hotkey-overlay-title="Screenshot region" { spawn "noctalia" "msg" "screenshot-region"; }
     Mod+Shift+5            repeat=false hotkey-overlay-title="Screenshot annotate"{ spawn "noctalia" "msg" "screenshot-annotate"; }
     Mod+Escape             repeat=false hotkey-overlay-title="Session panel" { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+Alt+C              repeat=false hotkey-overlay-title="Toggle auto-centering" { spawn "sh" "-c" "sh \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/toggle-centering.sh\""; }
+    Mod+P                  repeat=false hotkey-overlay-title="Color picker" { spawn "hyprpicker" "-a" "-u" "300"; }
     XF86AudioMute          repeat=false { spawn "noctalia" "msg" "volume-mute"; }
     XF86AudioLowerVolume   { spawn "noctalia" "msg" "volume-down"; }
     XF86AudioRaiseVolume   { spawn "noctalia" "msg" "volume-up"; }
+    XF86AudioPlay          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
+    XF86AudioNext          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
+    XF86AudioPrev          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
 
     Mod+O             repeat=false { toggle-overview; }
     Mod+Shift+Slash   repeat=false { show-hotkey-overlay; }

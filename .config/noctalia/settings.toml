@@ -4,25 +4,23 @@ config_version = 14
 order = [ "top", "bottom" ]
 
     [bar.bottom]
-    background_opacity = 0.4999999888241291
-    center = [ "privacy" ]
-    end = [ "media", "tray", "notifications", "network", "brightness", "bluetooth", "volume", "battery", "clock" ]
-    font_weight = 400
-    margin_ends = 0
-    radius = 0
-    start = [ "workspaces" ]
-    thickness = 25
-    widget_spacing = 10
-
-    [bar.top]
-    background_opacity = 0.4999999888241291
+    background_opacity = 1.0
     center = []
     end = [ "clipboard", "wallpaper", "cpu", "temp", "ram", "session" ]
-    font_weight = 400
     margin_ends = 0
     position = "bottom"
     radius = 0
     start = [ "launcher", "taskbar" ]
+    thickness = 25
+    widget_spacing = 10
+
+    [bar.top]
+    background_opacity = 1.0
+    center = [ "privacy" ]
+    end = [ "media", "tray", "notifications", "network", "brightness", "bluetooth", "volume", "battery", "clock" ]
+    margin_ends = 0
+    radius = 0
+    start = [ "workspaces" ]
     thickness = 25
     widget_spacing = 10
 
@@ -84,7 +82,10 @@ wallpaper_folder = "/home/user1/Pictures/walls/mojave_hours"
 wallpaper_path = "/home/user1/Pictures/walls/mojave_hours/266_5.png"
 
 [plugin_settings."thsr/solar-dynamic-wallpaper"]
-wallpaper_folder = "/home/user1/Pictures/walls/mojave_hours"
+diagnostics_layer = "overlay"
+diagnostics_position = "center"
+latitude = 39.0
+wallpaper_folder = "/home/user1/Pictures/walls/solar_gradient_hours_png"
 
 [plugins]
 auto_update = "all"
@@ -177,16 +178,16 @@ wallpaper_scheme = "m3-monochrome"
 directory = "/home/user1/Pictures/walls"
 edge_smoothness = 0.73999998345971107
 transition = [ "fade" ]
-transition_duration = 30000
+transition_duration = 24100
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/mojave_hours/233_38.png"
+    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/0000.png"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/mojave_hours/233_38.png"
+    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/0000.png"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/user1/Pictures/walls/mojave_hours/233_38.png"
+    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/0000.png"
 
 [widget.clock]
 format = "%a %b %d %l:%M %p"
