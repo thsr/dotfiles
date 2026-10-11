@@ -1,16 +1,19 @@
 config_version = 14
 
+[accessibility]
+ui_scale = 1.1000000089406967
+
 [bar]
 order = [ "top", "bottom" ]
 
     [bar.bottom]
     background_opacity = 1.0
     center = []
-    end = [ "clipboard", "wallpaper", "cpu", "temp", "ram", "session" ]
+    end = [ "clipboard", "wallpaper", "session" ]
     margin_ends = 0
     position = "bottom"
     radius = 0
-    start = [ "launcher", "taskbar" ]
+    start = [ "launcher", "workspaces", "taskbar" ]
     thickness = 25
     widget_spacing = 10
 
@@ -20,7 +23,7 @@ order = [ "top", "bottom" ]
     end = [ "media", "tray", "notifications", "network", "brightness", "bluetooth", "volume", "battery", "clock" ]
     margin_ends = 0
     radius = 0
-    start = [ "workspaces" ]
+    start = [ "cpu", "temp", "ram" ]
     thickness = 25
     widget_spacing = 10
 
@@ -181,13 +184,13 @@ transition = [ "fade" ]
 transition_duration = 24100
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/0000.png"
+    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/1915.png"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/0000.png"
+    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/1915.png"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/0000.png"
+    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/1915.png"
 
 [widget.clock]
 format = "%a %b %d %l:%M %p"

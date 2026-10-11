@@ -169,9 +169,9 @@ window-rule {
     default-column-width { fixed 600; }
     default-window-height { fixed 600; }
 }
-// Place the DMS/quickshell layer behind the overview.
+// Place wallapper behind the overview
 layer-rule {
-    match namespace="^quickshell$"
+    match namespace="noctalia-wallpaper"
     place-within-backdrop true
 }
 
@@ -182,7 +182,6 @@ binds {
     Mod+B       repeat=false { spawn "chromium"; }
     Mod+V       repeat=false { spawn "ghostty"; }
     Mod+Return  repeat=false { spawn "ghostty"; }
-    Mod+Z       repeat=false { spawn "zeditor"; }
     Mod+D       repeat=false { spawn "thunar"; }
     Mod+T       repeat=false { toggle-window-floating; }
     Mod+X       repeat=false { close-window; }
