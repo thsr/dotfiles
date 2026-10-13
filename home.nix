@@ -241,6 +241,7 @@
     enable = true;
     enableSshSupport = true;
     pinentry.package = pkgs.pinentry-qt;
+    extraConfig = "pinentry-timeout 30";
   };
 
   programs.git = {
