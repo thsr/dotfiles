@@ -88,7 +88,7 @@ wallpaper_path = "/home/user1/Pictures/walls/mojave_hours/266_5.png"
 diagnostics_layer = "overlay"
 diagnostics_position = "center"
 latitude = 39.0
-wallpaper_folder = "/home/user1/Pictures/walls/solar_gradient_hours_png"
+wallpaper_folder = "/home/user1/Pictures/walls/mojave_hours"
 
 [plugins]
 auto_update = "all"
@@ -184,13 +184,13 @@ transition = [ "fade" ]
 transition_duration = 24100
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/1915.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/1830.png"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/1915.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/1830.png"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/user1/Pictures/walls/solar_gradient_hours_png/1915.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/1830.png"
 
 [widget.clock]
 format = "%a %b %d %l:%M %p"
@@ -202,6 +202,6 @@ glyph = "grid-dots"
 hide_when_no_media = true
 
 [widget.taskbar]
-only_active_workspace = true
+show_all_outputs = true
 show_window_title = true
 window_title_max_width = 150

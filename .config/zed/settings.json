@@ -30,8 +30,10 @@
   // "cursor_blink": false,
   "format_on_save": "off",
   "git_panel": {
+    "group_by": "none",
+    "sort_by": "name",
     "dock": "left",
-    "tree_view": false,
+    "tree_view": true,
   },
   "show_wrap_guides": true,
   "edit_predictions": {

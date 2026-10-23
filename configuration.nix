@@ -28,6 +28,14 @@ let
       install -Dm644 *.ttf -t $out/share/fonts/truetype/pragmata-pro
     '';
   };
+  minlo = pkgs.stdenvNoCC.mkDerivation {
+    pname = "minlo";
+    version = "local";
+    src = ./fonts/minlo;
+    installPhase = ''
+      install -Dm644 *.ttf -t $out/share/fonts/truetype/minlo
+    '';
+  };
 in
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -160,6 +168,7 @@ in
       jetbrains-mono
       liberation_ttf
       lucidaGrande  # from let block
+      minlo  # from let block
       monaco  # from let block
       pragmataPro  # from let block
       source-sans
