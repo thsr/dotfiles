@@ -12,6 +12,14 @@ let
       install -Dm644 *.ttf -t $out/share/fonts/truetype/lucida-grande
     '';
   };
+  minlo = pkgs.stdenvNoCC.mkDerivation {
+    pname = "minlo";
+    version = "local";
+    src = ./fonts/minlo;
+    installPhase = ''
+      install -Dm644 *.ttf -t $out/share/fonts/truetype/minlo
+    '';
+  };
   monaco = pkgs.stdenvNoCC.mkDerivation {
     pname = "moncao";
     version = "local";
@@ -26,14 +34,6 @@ let
     src = ./fonts/pragmata-pro;
     installPhase = ''
       install -Dm644 *.ttf -t $out/share/fonts/truetype/pragmata-pro
-    '';
-  };
-  minlo = pkgs.stdenvNoCC.mkDerivation {
-    pname = "minlo";
-    version = "local";
-    src = ./fonts/minlo;
-    installPhase = ''
-      install -Dm644 *.ttf -t $out/share/fonts/truetype/minlo
     '';
   };
 in
@@ -158,6 +158,7 @@ in
   fonts = {
     fontDir.enable = true;
     packages = (with pkgs; [
+      agave
       corefonts
       departure-mono
       ia-writer-mono
@@ -167,12 +168,14 @@ in
       inter
       jetbrains-mono
       liberation_ttf
-      lucidaGrande  # from let block
-      minlo  # from let block
-      monaco  # from let block
-      pragmataPro  # from let block
+      lucidaGrande         # from let block
+      minlo                # from let block
+      monaco               # from let block
+      nerd-fonts.go-mono
+      pragmataPro          # from let block
       source-sans
       source-code-pro
+      unifont
     ]) ++ (map
       (variant: pkgs.iosevka-bin.override { inherit variant; })
       [

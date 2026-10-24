@@ -124,7 +124,7 @@
   "lsp_document_colors": "background",
 
   "text_rendering_mode": "grayscale",
-  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_family": "Agave",
   "buffer_font_features": {
     "calt": false,
     "liga": false,
@@ -132,7 +132,7 @@
     "clig": false,
     "hlig": false
   },
-  // "buffer_font_size": 15,
+  "buffer_font_size": 17,
   "buffer_font_weight": 500,
   "buffer_line_height": "standard",
   "ui_font_family": "Iosevka Aile",
