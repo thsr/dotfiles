@@ -36,6 +36,14 @@ let
       install -Dm644 *.ttf -t $out/share/fonts/truetype/pragmata-pro
     '';
   };
+  undefinedMedium = pkgs.stdenvNoCC.mkDerivation {
+    pname = "undefined-medium";
+    version = "local";
+    src = ./fonts/undefined-medium;
+    installPhase = ''
+      install -Dm644 *.ttf -t $out/share/fonts/truetype/undefined-medium
+    '';
+  };
 in
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -160,7 +168,7 @@ in
     packages = (with pkgs; [
       agave
       corefonts
-      departure-mono
+      departure-mono     # 8pt
       ia-writer-mono
       ia-writer-duospace
       ia-writer-quattro
@@ -168,14 +176,16 @@ in
       inter
       jetbrains-mono
       liberation_ttf
-      lucidaGrande         # from let block
-      minlo                # from let block
-      monaco               # from let block
+      lucidaGrande       # *
+      minlo              # *
+      monaco             # *
       nerd-fonts.go-mono
-      pragmataPro          # from let block
+      pragmataPro        # *
       source-sans
       source-code-pro
-      unifont
+      undefinedMedium    # * 7.5pt
+      unifont            # 12pt
+      # from let block (*)
     ]) ++ (map
       (variant: pkgs.iosevka-bin.override { inherit variant; })
       [

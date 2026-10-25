@@ -205,7 +205,7 @@
       nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#(hostname -s)";
     };
     interactiveShellInit = ''
-      fastfetch --logo small
+      fastfetch
     '';
     functions.fish_prompt = ''
       echo

@@ -8,11 +8,10 @@ custom-shader = hackr-sh-shaders/smear_cursor_blocks.glsl
 custom-shader-animation = always
 window-decoration = server
 
-font-family = "GoMono Nerd Font"
+font-family = "Unifont"
 font-size = 12
-# font-family = "JetBrains Mono"
-# freetype-load-flags = monochrome
-font-thicken = true
+#freetype-load-flags = monochrome
+#font-thicken = true
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
