@@ -193,7 +193,7 @@ transition_duration = 24100
     path = "/home/user1/Pictures/walls/mojave_hours/2200.png"
 
 [widget.clock]
-format = "%a %b %d %l:%M %p"
+format = "%a %b %-e %l:%M %p"
 
 [widget.launcher]
 glyph = "grid-dots"

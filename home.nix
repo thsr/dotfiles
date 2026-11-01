@@ -6,11 +6,9 @@
     homeDirectory = "/home/user1";
     pointerCursor = {
       enable = true;
-      # name = "Quintom_Ink";
-      # package = pkgs.quintom-cursor-theme;
-      package = pkgs.capitaine-cursors;
-      name = "Capitaine Cursors";
-      size = 24;
+      name = "Adwaita";
+      size = 20;
+      package = pkgs.adwaita-icon-theme;
       gtk.enable = true;
       x11.enable = true;
     };
@@ -31,7 +29,7 @@
     latitude = 39.0;
     longitude = 0.0;
     temperature.day = 6500;
-    temperature.night = 3000;
+    temperature.night = 2900;
     # settings.general.adjustment-method = "randr";  # or "wayland"
   };
 
@@ -52,8 +50,6 @@
       "Gtk/FontName"          = "Lucida Grande 9";
       "Gtk/MonospaceFontName" = "JetBrains Mono Medium 10";
       "Xft/DPI"               = 96;
-      "Gtk/CursorThemeName"   = "capitaine-cursors";
-      "Gtk/CursorThemeSize"   = 32;
     };
     xfwm4 = {
       "general/theme" = "Agua";
@@ -157,10 +153,11 @@
 
   # %%% packages / programs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   home.packages = with pkgs; [
-    agent-browser
+    agent-browser  # comes with some vars in home.sessionVariables above
     brave
     ffmpeg
     ghostty
+    go
     gthumb
     hyprpicker
     nodejs

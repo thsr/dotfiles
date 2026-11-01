@@ -24,8 +24,8 @@ input {
     }
 }
 cursor {
-    xcursor-theme "capitaine-cursors"
-    xcursor-size 32
+    xcursor-theme "Adwaita"
+    xcursor-size 20
 }
 layout {
     gaps 100
