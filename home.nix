@@ -163,11 +163,11 @@
     nodejs
     obsidian
     openssh
+    python3
     qalculate-qt
     spotify
     sublime3
     wl-clipboard
-    zed-editor
   ];
 
   programs.chromium = {
@@ -245,5 +245,14 @@
     enable = true;
     settings.user.name = "thsr";
     settings.user.email = "14094094+thsr@users.noreply.github.com";
+  };
+
+  programs.zed-editor = {
+    enable = true;
+    extraPackages = with pkgs; [
+      gopls
+      basedpyright
+      ruff
+    ];
   };
 }
