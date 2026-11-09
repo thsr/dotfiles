@@ -27,13 +27,13 @@
   "buffer_font_size": 17,
   "buffer_font_weight": 500,
   "buffer_line_height": "standard",
-  "ui_font_family": "Iosevka Aile",
+  "ui_font_family": "Trebuchet MS",
   // "ui_font_size": 16,
   "ui_font_weight": 500,
   "theme": {
     "mode": "light",
-    "light": "Alabaster ALT BG High Contrast (chill Marks)",
-    "dark": "Alabaster Dark"
+    "light": "Plaster BG High Contrast",
+    "dark": "Plaster Dark"
   },
   "theme_overrides": {
     "Gruvbox Light": {
@@ -67,7 +67,7 @@
   "languages": {
     "Go": {
       "format_on_save": "on",
-      "tab_size": 6,
+      "tab_size": 4,
       "formatter": "language_server",
       "code_actions_on_format": { "source.organizeImports": true },
     },
@@ -75,7 +75,7 @@
       "format_on_save": "on"
     },
     "Python": {
-      "format_on_save": "on",
+      // "format_on_save": "on",
       "hard_tabs": false,
       "tab_size": 4,
       "language_servers": ["basedpyright", "ruff"],
@@ -94,6 +94,7 @@
   "helix_mode": false,
   "base_keymap": "VSCode",
   // "cursor_blink": false,
+  // "cursor_shape": "block",
   "project_panel": {
     "auto_reveal_entries": true,
     "git_status": true,

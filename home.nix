@@ -144,7 +144,7 @@
   xdg.configFile."zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/settings.json";
   xdg.configFile."zed/keymap.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/keymap.json";
   xdg.configFile."zed/themes/Alabaster.json".source = ./.config/zed/themes/Alabaster.json;
-  xdg.configFile."zed/themes/AlabasterALT.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/themes/AlabasterALT.json";
+  xdg.configFile."zed/themes/Plaster.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/themes/Plaster.json";
 
   xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/ghostty/config";
 

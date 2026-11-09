@@ -104,6 +104,11 @@ window-rule {
     default-window-height { proportion 0.5; }
 }
 window-rule {
+    match app-id="sublime_text"
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 800; }
+}
+window-rule {
     match app-id="Thunar|thunar" is-floating=true
     default-column-width { proportion 0.2; }
     default-window-height { proportion 0.4; }
