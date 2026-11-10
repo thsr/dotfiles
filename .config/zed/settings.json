@@ -31,9 +31,9 @@
   // "ui_font_size": 16,
   "ui_font_weight": 500,
   "theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "Plaster BG High Contrast",
-    "dark": "Plaster Dark"
+    "dark": "Plaster Dark Green"
   },
   "theme_overrides": {
     "Gruvbox Light": {
