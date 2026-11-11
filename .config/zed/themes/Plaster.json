@@ -898,7 +898,7 @@
         "editor.background": "#062626",
         "editor.gutter.background": "#001f1f",
         "editor.subheader.background": "#00000055",
-        "editor.active_line.background": "#ffffff00",
+        "editor.active_line.background": "#ffffff08",
         "editor.highlighted_line.background": "#ffffff08",
         "editor.line_number": "#B0B0A388",
         "editor.active_line_number": "#cccccc",
@@ -1091,6 +1091,11 @@
             "font_style": null,
             "font_weight": null
           },
+          "keyword": {
+            "color": "#cccccc",
+            "font_style": null,
+            "font_weight": null
+          },
           "tag": {
             "color": "#71ADE7",
             "font_style": null,
@@ -1098,6 +1103,11 @@
           },
           "punctuation": {
             "color": "#777777",
+            "font_style": null,
+            "font_weight": null
+          },
+          "title.markup": {
+            "color": "#71ADE7",
             "font_style": null,
             "font_weight": null
           }
