@@ -176,6 +176,7 @@
     },
   },
   "agent": {
+    "sidebar_side": "right",
     "threads_sidebar": { "position": "right" },
     "thinking_display": "always_collapsed",
     "dock": "right",

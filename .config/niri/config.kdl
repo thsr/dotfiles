@@ -31,7 +31,6 @@ layout {
     gaps 100
     background-color "transparent"
 
-    // center-focused-column "always"
     center-focused-column "on-overflow"
     empty-workspace-above-first
     always-center-single-column
@@ -233,6 +232,8 @@ binds {
     XF86AudioPlay          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
     XF86AudioNext          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
     XF86AudioPrev          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
+    XF86MonBrightnessUp   { spawn "noctalia" "msg" "brightness-up"; }
+    XF86MonBrightnessDown { spawn "noctalia" "msg" "brightness-down"; }
 
     Mod+O             repeat=false { toggle-overview; }
     Mod+Shift+Slash   repeat=false { show-hotkey-overlay; }

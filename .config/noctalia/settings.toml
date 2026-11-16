@@ -205,19 +205,21 @@ source = "wallpaper"
 wallpaper_scheme = "m3-monochrome"
 
 [wallpaper]
-directory = "/home/user1/Pictures/walls"
 edge_smoothness = 0.73999998345971107
 transition = [ "fade" ]
 transition_duration = 24100
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/mojave_hours/0000.png"
+    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/mojave_hours/0000.png"
+    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
 
     [wallpaper.monitors.DP-3]
     path = "/home/user1/Pictures/walls/mojave_hours/0000.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
 
 [widget.clock]
 format = "%a %b %-e %l:%M %p"
