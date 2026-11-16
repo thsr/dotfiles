@@ -12,12 +12,36 @@ let
       install -Dm644 *.ttf -t $out/share/fonts/truetype/lucida-grande
     '';
   };
+  minlo = pkgs.stdenvNoCC.mkDerivation {
+    pname = "minlo";
+    version = "local";
+    src = ./fonts/minlo;
+    installPhase = ''
+      install -Dm644 *.ttf -t $out/share/fonts/truetype/minlo
+    '';
+  };
   monaco = pkgs.stdenvNoCC.mkDerivation {
     pname = "moncao";
     version = "local";
     src = ./fonts/monaco;
     installPhase = ''
       install -Dm644 *.ttf -t $out/share/fonts/truetype/monaco
+    '';
+  };
+  pragmataPro = pkgs.stdenvNoCC.mkDerivation {
+    pname = "pragmata-pro";
+    version = "local";
+    src = ./fonts/pragmata-pro;
+    installPhase = ''
+      install -Dm644 *.ttf -t $out/share/fonts/truetype/pragmata-pro
+    '';
+  };
+  undefinedMedium = pkgs.stdenvNoCC.mkDerivation {
+    pname = "undefined-medium";
+    version = "local";
+    src = ./fonts/undefined-medium;
+    installPhase = ''
+      install -Dm644 *.ttf -t $out/share/fonts/truetype/undefined-medium
     '';
   };
 in
@@ -117,6 +141,7 @@ in
     git
     gparted
     librewolf
+    ripgrep
     unzip
     wget
     xarchiver
@@ -140,21 +165,35 @@ in
   # %%% fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   fonts = {
     fontDir.enable = true;
-    packages = with pkgs; [
+    packages = (with pkgs; [
+      agave
       corefonts
+      departure-mono     # 8pt
       ia-writer-mono
       ia-writer-duospace
       ia-writer-quattro
       ibm-plex
       inter
-      iosevka
       jetbrains-mono
       liberation_ttf
-      lucidaGrande  # from let block
-      monaco  # from let block
+      lucidaGrande       # *
+      minlo              # *
+      monaco             # *
+      nerd-fonts.go-mono
+      pragmataPro        # *
       source-sans
       source-code-pro
-    ];
+      undefinedMedium    # * 7.5pt
+      unifont            # 12pt
+      # from let block (*)
+    ]) ++ (map
+      (variant: pkgs.iosevka-bin.override { inherit variant; })
+      [
+         "SGr-IosevkaFixed"
+         "SGr-IosevkaFixedSlab"
+         "Aile"
+         "Etoile"
+       ]);
     fontconfig.defaultFonts = {
       sansSerif = [ "Lucida Grande" ];
       serif = [ "IBM Plex Serif" ];
