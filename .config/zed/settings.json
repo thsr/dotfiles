@@ -24,14 +24,14 @@
     "clig": false,
     "hlig": false
   },
-  "buffer_font_size": 17,
+  "buffer_font_size": 15,
   "buffer_font_weight": 500,
   "buffer_line_height": "standard",
   "ui_font_family": "Trebuchet MS",
-  // "ui_font_size": 16,
+  "ui_font_size": 15,
   "ui_font_weight": 500,
   "theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "Plaster BG High Contrast",
     "dark": "Plaster Dark Green"
   },
@@ -115,7 +115,7 @@
     "group_by": "none",
     "sort_by": "name",
     "dock": "left",
-    "tree_view": false,
+    "tree_view": true,
   },
   "minimap": {
     "max_width_columns": 50,

@@ -19,8 +19,9 @@ input {
     touchpad {
         // tap
         // accel-profile "flat"
-        accel-speed 0.1
-        scroll-factor 1
+        click-method "clickfinger"
+        accel-speed 0.3
+        scroll-factor 0.5
     }
 }
 cursor {
@@ -85,7 +86,7 @@ output "DP-1" {
 output "eDP-1" {
     mode "2880x1800@60.000"
     position x=0 y=0
-    scale 1.5
+    scale 1.25
     layout {
         gaps 20
     }
@@ -94,13 +95,13 @@ output "eDP-1" {
 // list with `niri msg windows`
 window-rule {
     match app-id="com.mitchellh.ghostty"
-    default-column-width { fixed 1000; }
-    default-window-height { proportion 0.75; }
+    default-column-width { fixed 880; }
+    default-window-height { fixed 1200; }
 }
 window-rule {
     match app-id="Thunar|thunar"
     default-column-width { fixed 1000; }
-    default-window-height { proportion 0.5; }
+    default-window-height { fixed 1000; }
 }
 window-rule {
     match app-id="sublime_text"
@@ -142,18 +143,19 @@ window-rule {
 }
 window-rule {
     match app-id="xdg-desktop-portal-gtk"
-    default-column-width { proportion 0.2; }
-    default-window-height { proportion 0.4; }
+    default-column-width { fixed 750; }
+    default-window-height { fixed 750; }
 }
 window-rule {
     match app-id="firefox"
     match app-id="chromium-browser"
-    default-column-width { fixed 1600; }
+    default-column-width { fixed 1400; }
 }
 window-rule {
     match app-id="md.Obsidian"
-    default-column-width { proportion 0.4; }
-    default-window-height { proportion 0.5; }
+    match app-id="md.obsidian.Obsidian"
+    default-column-width { fixed 1200; }
+    default-window-height { fixed 800; }
 }
 window-rule {
     match app-id="xarchiver"
@@ -172,6 +174,11 @@ window-rule {
     open-floating true
     default-column-width { fixed 600; }
     default-window-height { fixed 600; }
+}
+window-rule {
+    match app-id="Spotify"
+    default-column-width { fixed 800; }
+    default-window-height { proportion 1.0; }
 }
 // Place wallapper behind the overview
 layer-rule {
@@ -202,15 +209,19 @@ binds {
     Mod+Next    { focus-workspace-down; }
     Mod+Up      { focus-window-or-workspace-up; }
     Mod+Down    { focus-window-or-workspace-down; }
+    Mod+Shift+Up      { focus-window-or-workspace-up; }
+    Mod+Shift+Down    { focus-window-or-workspace-down; }
     Mod+Left    cooldown-ms=50 { focus-column-left; }
     Mod+Right   cooldown-ms=50 { focus-column-right; }
+    Mod+Shift+Left    cooldown-ms=50 { focus-column-left; }
+    Mod+Shift+Right   cooldown-ms=50 { focus-column-right; }
 
-    Mod+Shift+Up      cooldown-ms=50 { move-window-up-or-to-workspace-up; }
-    Mod+Shift+Down    cooldown-ms=50 { move-window-down-or-to-workspace-down; }
-    Mod+Shift+Left    cooldown-ms=50 { move-column-left-or-to-monitor-left; }
-    Mod+Shift+Right   cooldown-ms=50 { move-column-right-or-to-monitor-right; }
-    Mod+Shift+H       cooldown-ms=50 { consume-or-expel-window-left; }
-    Mod+Shift+L       cooldown-ms=50 { consume-or-expel-window-right; }
+    Mod+Alt+Up      cooldown-ms=50 { move-window-up-or-to-workspace-up; }
+    Mod+Alt+Down    cooldown-ms=50 { move-window-down-or-to-workspace-down; }
+    Mod+Alt+Left    cooldown-ms=50 { move-column-left-or-to-monitor-left; }
+    Mod+Alt+Right   cooldown-ms=50 { move-column-right-or-to-monitor-right; }
+    Mod+Alt+H       cooldown-ms=50 { consume-or-expel-window-left; }
+    Mod+Alt+L       cooldown-ms=50 { consume-or-expel-window-right; }
 
     // For dms-shell
     // Mod+Space   repeat=false { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
@@ -218,28 +229,50 @@ binds {
     // Mod+Shift+4   repeat=false { spawn "dms" "screenshot"; }
     // Mod+Shift+5   repeat=false { spawn "dms" "screenshot" "window"; }
     // Mod+Shift+L       repeat=false { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-    Mod+Space              repeat=false hotkey-overlay-title="Launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-    Mod+comma              repeat=false hotkey-overlay-title="Shell settings" { spawn "noctalia" "msg" "settings-toggle"; }
-    Mod+Shift+3            repeat=false hotkey-overlay-title="Screenshot fullscreen" { spawn "noctalia" "msg" "screenshot-fullscreen" "pick"; }
-    Mod+Shift+4            repeat=false hotkey-overlay-title="Screenshot region" { spawn "noctalia" "msg" "screenshot-region"; }
-    Mod+Shift+5            repeat=false hotkey-overlay-title="Screenshot annotate"{ spawn "noctalia" "msg" "screenshot-annotate"; }
-    Mod+Escape             repeat=false hotkey-overlay-title="Session panel" { spawn "noctalia" "msg" "panel-toggle" "session"; }
-    Mod+Alt+C              repeat=false hotkey-overlay-title="Toggle auto-centering" { spawn "sh" "-c" "sh \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/toggle-centering.sh\""; }
-    Mod+P                  repeat=false hotkey-overlay-title="Color picker" { spawn "hyprpicker" "-a" "-u" "300"; }
-    XF86AudioMute          repeat=false { spawn "noctalia" "msg" "volume-mute"; }
-    XF86AudioLowerVolume   { spawn "noctalia" "msg" "volume-down"; }
-    XF86AudioRaiseVolume   { spawn "noctalia" "msg" "volume-up"; }
-    XF86AudioPlay          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
-    XF86AudioNext          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
-    XF86AudioPrev          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
-    XF86MonBrightnessUp   { spawn "noctalia" "msg" "brightness-up"; }
-    XF86MonBrightnessDown { spawn "noctalia" "msg" "brightness-down"; }
+    Mod+Space                      repeat=false hotkey-overlay-title="Launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+comma                      repeat=false hotkey-overlay-title="Shell settings" { spawn "noctalia" "msg" "settings-toggle"; }
+    Mod+Shift+3                    repeat=false hotkey-overlay-title="Screenshot fullscreen" { spawn "noctalia" "msg" "screenshot-fullscreen" "pick"; }
+    Mod+Shift+4                    repeat=false hotkey-overlay-title="Screenshot region" { spawn "noctalia" "msg" "screenshot-region"; }
+    Mod+Shift+5                    repeat=false hotkey-overlay-title="Screenshot annotate"{ spawn "noctalia" "msg" "screenshot-annotate"; }
+    Mod+Escape                     repeat=false hotkey-overlay-title="Session panel" { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+Alt+C                      repeat=false hotkey-overlay-title="Toggle auto-centering" { spawn "sh" "-c" "sh \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/toggle-centering.sh\""; }
+    Mod+P                          repeat=false hotkey-overlay-title="Color picker" { spawn "hyprpicker" "-a" "-u" "300"; }
+    XF86AudioMute                  repeat=false { spawn "noctalia" "msg" "volume-mute"; }
+    XF86AudioLowerVolume           { spawn "noctalia" "msg" "volume-down"; }
+    XF86AudioRaiseVolume           { spawn "noctalia" "msg" "volume-up"; }
+    XF86AudioPlay                  repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
+    XF86AudioNext                  repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
+    XF86AudioPrev                  repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
+    XF86MonBrightnessUp            repeat=false allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
+    XF86MonBrightnessDown          repeat=false allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
+    Mod+XF86MonBrightnessUp        repeat=false { spawn "noctalia" "msg" "keyboard-backlight-up"; }
+    Mod+XF86MonBrightnessDown      repeat=false { spawn "noctalia" "msg" "keyboard-backlight-down"; }
+    XF86AudioMicMute               repeat=false { spawn "noctalia" "msg" "mic-mute"; }
+
 
     Mod+O             repeat=false { toggle-overview; }
+    Mod+Alt+Space     repeat=false { toggle-overview; }
     Mod+Shift+Slash   repeat=false { show-hotkey-overlay; }
     Mod+Shift+E       repeat=false { quit; }
 }
 
+// animations {
+//     workspace-switch {
+//         spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+//     }
+//     horizontal-view-movement {
+//         spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+//     }
+//     window-movement {
+//         spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+//     }
+//     window-resize {
+//         spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+//     }
+//     overview-open-close {
+//         spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+//     }
+// }
 animations {
     workspace-switch {
         duration-ms 100

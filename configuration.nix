@@ -99,6 +99,7 @@ in
   programs.thunar = {
     enable = true;
     plugins = with pkgs; [
+      thunar-volman
       (pkgs.thunar-archive-plugin.overrideAttrs (old: {
         postInstall = (old.postInstall or "") + ''
           install -Dm755 ${xarchiver}/libexec/thunar-archive-plugin/xarchiver.tap \
@@ -108,6 +109,8 @@ in
       xarchiver
     ];
   };
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
 
   environment.systemPackages = with pkgs; [
     (vim-full.customize {
@@ -137,7 +140,6 @@ in
     })
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     fastfetch
-    ffmpeg
     git
     gparted
     librewolf

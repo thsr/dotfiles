@@ -1,7 +1,7 @@
 config_version = 14
 
 [accessibility]
-ui_scale = 1.1000000089406967
+ui_scale = 1.0000000089406966
 
 [bar]
 order = [ "top", "bottom" ]
@@ -12,7 +12,9 @@ order = [ "top", "bottom" ]
     end = [ "clipboard", "wallpaper", "session" ]
     margin_ends = 0
     position = "bottom"
-    radius = 0
+    radius_bottom_left = 0
+    radius_bottom_right = 0
+    shadow = false
     start = [ "launcher", "workspaces", "taskbar" ]
     thickness = 25
     widget_spacing = 10
@@ -22,7 +24,9 @@ order = [ "top", "bottom" ]
     center = [ "privacy" ]
     end = [ "media", "tray", "notifications", "network", "brightness", "bluetooth", "volume", "battery", "clock" ]
     margin_ends = 0
-    radius = 0
+    radius_top_left = 0
+    radius_top_right = 0
+    shadow = false
     start = [ "cpu", "temp", "ram" ]
     thickness = 25
     widget_spacing = 10
@@ -74,11 +78,11 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-login-box@DP-3" ]
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 196.0
     box_width = 810.0
-    cx = 960.0
-    cy = 1018.0
+    cx = 1152.0
+    cy = 1221.5999755859375
     output = "eDP-1"
-    placement_height = 1200.0
-    placement_width = 1920.0
+    placement_height = 1440.0
+    placement_width = 2304.0
     rotation = 0.0
     type = "login_box"
 
@@ -201,6 +205,8 @@ button_borders = false
 [theme]
 community_palette = "Monochrome"
 mode = "light"
+pure_black_dark = true
+shell_mode = "dark"
 source = "wallpaper"
 wallpaper_scheme = "m3-monochrome"
 
@@ -210,16 +216,16 @@ transition = [ "fade" ]
 transition_duration = 24100
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/mojave_hours/1830.png"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/mojave_hours/1830.png"
 
     [wallpaper.monitors.DP-3]
     path = "/home/user1/Pictures/walls/mojave_hours/0000.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/user1/Pictures/walls/wallhaven-xedleo.jpg"
+    path = "/home/user1/Pictures/walls/mojave_hours/1830.png"
 
 [widget.clock]
 format = "%a %b %-e %l:%M %p"
@@ -231,6 +237,7 @@ glyph = "grid-dots"
 hide_when_no_media = true
 
 [widget.taskbar]
+only_active_workspace = true
 show_all_outputs = true
 show_window_title = true
 window_title_max_width = 150

@@ -9,7 +9,7 @@ custom-shader-animation = always
 window-decoration = server
 
 font-family = "GoMono Nerd Font"
-font-size = 11
+font-size = 10
 #freetype-load-flags = monochrome
 font-thicken = true
 font-feature = -calt

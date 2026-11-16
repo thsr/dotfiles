@@ -163,6 +163,7 @@
     nodejs
     obsidian
     openssh
+    pi-coding-agent
     python3
     qalculate-qt
     spotify
@@ -198,7 +199,6 @@
     enable = true;
     shellAliases = {
       ll = "ls -lah --color=always --group-directories-first";
-      gs = "git status";
       nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#(hostname -s)";
     };
     interactiveShellInit = ''
