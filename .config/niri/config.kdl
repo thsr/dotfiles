@@ -23,6 +23,16 @@ input {
         accel-speed 0.3
         scroll-factor 0.5
     }
+    trackpoint {
+        // off
+        // natural-scroll
+        accel-speed -0.5
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // left-handed
+        // middle-emulation
+    }
 }
 cursor {
     xcursor-theme "Adwaita"
@@ -96,7 +106,7 @@ output "eDP-1" {
 window-rule {
     match app-id="com.mitchellh.ghostty"
     default-column-width { fixed 880; }
-    default-window-height { fixed 1200; }
+    default-window-height { fixed 600; }
 }
 window-rule {
     match app-id="Thunar|thunar"

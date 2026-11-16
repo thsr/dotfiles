@@ -123,7 +123,7 @@ wallpaper_folder = "/home/user1/Pictures/walls/mojave_hours"
 
 [plugins]
 auto_update = "all"
-enabled = [ "local/solar-position-wallpaper", "thsr/solar-dynamic-wallpaper", "decksters-lab/palette-creator" ]
+enabled = [ "local/solar-position-wallpaper", "thsr/solar-dynamic-wallpaper" ]
 
     [[plugins.source]]
     kind = "git"
@@ -217,16 +217,16 @@ transition = [ "fade" ]
 transition_duration = 24100
 
     [wallpaper.default]
-    path = "/home/user1/Pictures/walls/mojave_hours/2200.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/0000.png"
 
     [wallpaper.last]
-    path = "/home/user1/Pictures/walls/mojave_hours/2200.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/0000.png"
 
     [wallpaper.monitors.DP-3]
     path = "/home/user1/Pictures/walls/mojave_hours/0000.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/user1/Pictures/walls/mojave_hours/2200.png"
+    path = "/home/user1/Pictures/walls/mojave_hours/0000.png"
 
 [widget.clock]
 format = "%a %b %-e %l:%M %p"

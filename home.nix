@@ -213,9 +213,9 @@
       ll = "ls -lah --color=always --group-directories-first";
       nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#(hostname -s)";
     };
-    interactiveShellInit = ''
-      fastfetch
-    '';
+    # interactiveShellInit = ''
+    #   fastfetch
+    # '';
     functions.fish_prompt = ''
       echo
       set_color --bold green

@@ -6,7 +6,7 @@ cursor-style = block
 cursor-style-blink = false
 custom-shader = hackr-sh-shaders/smear_cursor_blocks.glsl
 custom-shader-animation = always
-window-decoration = server
+window-decoration = none
 
 font-family = "GoMono Nerd Font"
 font-size = 10
