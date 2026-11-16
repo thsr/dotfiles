@@ -133,8 +133,7 @@
   home.file.".themes/OS-X-Mavericks-1.2".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.themes/OS-X-Mavericks-1.2";
   home.file.".icons/Mac-OS-X-Lion-master".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.icons/Mac-OS-X-Lion-master";
 
-  home.file.".pi/agent/APPEND_SYSTEM.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.pi/agent/APPEND_SYSTEM.md";
-  home.file.".pi/agent/themes/high-contrast-light.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.pi/agent/themes/high-contrast-light.json";
+  xdg.configFile."Thunar/uca.xml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/Thunar/uca.xml";
 
   xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/config.kdl";
   xdg.configFile."niri/toggle-centering.sh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/toggle-centering.sh";
@@ -146,9 +145,12 @@
   xdg.configFile."zed/themes/Alabaster.json".source = ./.config/zed/themes/Alabaster.json;
   xdg.configFile."zed/themes/Plaster.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/themes/Plaster.json";
 
+  xdg.configFile."sublime-text-3/Packages/User/Preferences.sublime-settings".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/sublime-text-3/Packages/User/Preferences.sublime-settings";
+
   xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/ghostty/config";
 
-  xdg.configFile."Thunar/uca.xml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/Thunar/uca.xml";
+  home.file.".pi/agent/APPEND_SYSTEM.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.pi/agent/APPEND_SYSTEM.md";
+  home.file.".pi/agent/themes/high-contrast-light.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.pi/agent/themes/high-contrast-light.json";
 
 
   # %%% packages / programs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

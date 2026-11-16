@@ -1,0 +1,9 @@
+{
+    "font_face": "Minlo",
+    "font_options": ["gray_antialias"],
+    "font_size": 10,
+    "draw_white_space": "all",
+    "ensure_newline_at_eof_on_save": true,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+}
