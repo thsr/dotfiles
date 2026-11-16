@@ -123,7 +123,7 @@ wallpaper_folder = "/home/user1/Pictures/walls/mojave_hours"
 
 [plugins]
 auto_update = "all"
-enabled = [ "local/solar-position-wallpaper", "thsr/solar-dynamic-wallpaper" ]
+enabled = [ "local/solar-position-wallpaper", "thsr/solar-dynamic-wallpaper", "decksters-lab/palette-creator" ]
 
     [[plugins.source]]
     kind = "git"
@@ -142,6 +142,7 @@ enabled = [ "local/solar-position-wallpaper", "thsr/solar-dynamic-wallpaper" ]
 
 [shell]
 button_borders = false
+corner_radius_scale = 0.5000000074505806
 
     [shell.animation]
     speed = 3.35000004991889
@@ -204,10 +205,10 @@ button_borders = false
 
 [theme]
 community_palette = "Monochrome"
+custom_palette = "plaster"
 mode = "light"
-pure_black_dark = true
 shell_mode = "dark"
-source = "wallpaper"
+source = "custom"
 wallpaper_scheme = "m3-monochrome"
 
 [wallpaper]

@@ -72,7 +72,7 @@ layout {
 window-rule {
     draw-border-with-background false
     clip-to-geometry true
-    geometry-corner-radius 0
+    geometry-corner-radius 7
 }
 window-rule {
     match is-focused=false

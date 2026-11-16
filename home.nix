@@ -122,9 +122,18 @@
       name = "Brave (agent debug :9222)";
       comment = "Brave with remote debugging for agent-browser";
       exec = "brave --remote-debugging-port=9222 --window-size=900,600 https://example.com";
-      icon = "brave";
+      icon = "applications-internet";
       terminal = false;
       categories = [ "Network" "WebBrowser" ];
+    };
+
+    desktopEntries.dotfiles-zed = {
+      name = "dotfiles (Zed)";
+      comment = "open dotfiles in zed";
+      exec = "zeditor /home/user1/dotfiles";
+      icon = "linuxconf";
+      terminal = false;
+      categories = [ "Development" "IDE" ];
     };
   };
 
@@ -139,6 +148,7 @@
   xdg.configFile."niri/toggle-centering.sh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/niri/toggle-centering.sh";
 
   xdg.stateFile."noctalia/settings.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/noctalia/settings.toml";
+  xdg.stateFile."noctalia/palettes/plaster.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/noctalia/palettes/plaster.json";
 
   xdg.configFile."zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/settings.json";
   xdg.configFile."zed/keymap.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zed/keymap.json";
